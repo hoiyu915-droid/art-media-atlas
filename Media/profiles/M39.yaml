@@ -1,0 +1,25 @@
+id: "M39"
+name_zh: "針管筆"
+name_en: "Technical Pen"
+family: "drawing_ink"
+scores:
+  opacity: 5
+  line_precision: 5
+  medical_label_legibility: 5
+  portrait_fit: 3
+  anatomy_fit: 5
+  scene_fit: 3
+  public_health_fit: 5
+  archive_fit: 3
+  digital_fit: 4
+recommended_line_partner:
+  - "M01"
+  - "M43"
+  - "M69"
+reference_panels:
+  - "panels/M39/02__fingerprint.png"
+  - "panels/M39/05__portrait.png"
+  - "panels/M39/06__anatomy.png"
+  - "panels/M39/09__micro-technique.png"
+status: "pilot_visual_estimate"
+review_note: "Scores are practical visual estimates and should be revised after controlled smoke tests."

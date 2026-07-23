@@ -1,0 +1,25 @@
+id: "M74"
+name_zh: "向量插畫"
+name_en: "Vector Illustration"
+family: "digital_creation"
+scores:
+  opacity: 5
+  line_precision: 5
+  medical_label_legibility: 5
+  portrait_fit: 3
+  anatomy_fit: 5
+  scene_fit: 4
+  public_health_fit: 5
+  archive_fit: 1
+  digital_fit: 5
+recommended_line_partner:
+  - "M39"
+  - "M50"
+  - "M73"
+reference_panels:
+  - "panels/M74/02__fingerprint.png"
+  - "panels/M74/05__portrait.png"
+  - "panels/M74/06__anatomy.png"
+  - "panels/M74/09__micro-technique.png"
+status: "pilot_visual_estimate"
+review_note: "Scores are practical visual estimates and should be revised after controlled smoke tests."

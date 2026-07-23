@@ -1,0 +1,29 @@
+{
+  "id": "M73",
+  "name_zh": "點陣數位繪畫",
+  "name_en": "Raster Painting",
+  "family": "digital_creation",
+  "scores": {
+    "opacity": 5,
+    "line_precision": 5,
+    "medical_label_legibility": 5,
+    "portrait_fit": 4,
+    "anatomy_fit": 5,
+    "scene_fit": 4,
+    "public_health_fit": 5,
+    "archive_fit": 2,
+    "digital_fit": 5
+  },
+  "recommended_line_partner": [
+    "M72",
+    "M74"
+  ],
+  "reference_panels": [
+    "panels/M73/02__fingerprint.png",
+    "panels/M73/05__portrait.png",
+    "panels/M73/06__anatomy.png",
+    "panels/M73/09__micro-technique.png"
+  ],
+  "status": "pilot_visual_estimate",
+  "review_note": "Scores are practical visual estimates and should be revised after controlled smoke tests."
+}

@@ -1,0 +1,24 @@
+id: "M01"
+name_zh: "水彩"
+name_en: "Watercolor"
+family: "wet_paint"
+scores:
+  opacity: 2
+  line_precision: 2
+  medical_label_legibility: 3
+  portrait_fit: 5
+  anatomy_fit: 3
+  scene_fit: 5
+  public_health_fit: 3
+  archive_fit: 2
+  digital_fit: 2
+recommended_line_partner:
+  - "M08"
+  - "M39"
+reference_panels:
+  - "panels/M01/02__fingerprint.png"
+  - "panels/M01/05__portrait.png"
+  - "panels/M01/06__anatomy.png"
+  - "panels/M01/09__micro-technique.png"
+status: "pilot_visual_estimate"
+review_note: "Scores are practical visual estimates and should be revised after controlled smoke tests."
