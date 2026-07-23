@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "status": "provisional_non_executable",
+  "scope": "medical_and_research_infographic_workflow",
+  "records_file": "media_role_matrix_v1.csv",
+  "record_count": 75,
+  "fields": [
+    "id",
+    "name_zh",
+    "name_en",
+    "family",
+    "atlas_status",
+    "provisional_role",
+    "default_use",
+    "proposed_partner_ids",
+    "governance_status",
+    "rationale",
+    "source_url"
+  ],
+  "counts": {
+    "atlas_auto_eligible": 12,
+    "manual_review_required": 63,
+    "BASE": 18,
+    "PARTNER": 24,
+    "AVOID_DEFAULT": 33
+  },
+  "source_pins": {
+    "atlas_repository": "hoiyu915-droid/art-media-atlas",
+    "atlas_ref": "16fe341270150e7b60f3c547364580cdbef11617",
+    "atlas_path": "Media/manifest.json",
+    "atlas_version": "2026.07.23",
+    "atlas_blob_sha": "ae096ceaf1ff2b0afe9c5c181dab5f51d9e2370c"
+  },
+  "rules": [
+    "Provisional BASE or PARTNER roles do not grant automatic-use authority.",
+    "Pending atlas records remain MANUAL_REVIEW_REQUIRED.",
+    "The CSV is the canonical row-wise record table for this proposal bundle."
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "policy_name": "SEED14_DEFAULT_MEDIA_POLICY_PROPOSAL",
+  "schema_version": "1.0.0",
+  "status": "provisional_non_executable",
+  "policy_effect": "none_until_promoted",
+  "created_at": "2026-07-24",
+  "scope": [
+    "medical_mechanism_cards",
+    "research_summary_cards",
+    "anatomy_and_instrument_cards"
+  ],
+  "source_pins": {
+    "media_atlas": {
+      "repository": "hoiyu915-droid/art-media-atlas",
+      "ref": "16fe341270150e7b60f3c547364580cdbef11617",
+      "path": "Media/manifest.json",
+      "atlas_version": "2026.07.23",
+      "blob_sha": "ae096ceaf1ff2b0afe9c5c181dab5f51d9e2370c",
+      "url": "https://github.com/hoiyu915-droid/art-media-atlas/blob/16fe341270150e7b60f3c547364580cdbef11617/Media/manifest.json"
+    },
+    "seed_media_binding": {
+      "repository": "hoiyu915-droid/seed-resolver",
+      "ref": "main",
+      "path": "controls/seed_media_bindings.json",
+      "blob_sha": "80a3373ba206007d93d52843a89cb3de0261664f",
+      "url": "https://github.com/hoiyu915-droid/seed-resolver/blob/main/controls/seed_media_bindings.json"
+    }
+  },
+  "default_recipe": {
+    "base_medium_id": "M17",
+    "base_role": "dry_layered_colored_pencil",
+    "partner_medium_id": "M22",
+    "partner_role": "fine_graphite_underdrawing",
+    "max_base_media": 1,
+    "max_partner_media": 2,
+    "selection_intent": "warmth_plus_structural_precision"
+  },
+  "conditional_partner": {
+    "medium_id": "M39",
+    "role": "technical_line_support",
+    "allow_when": [
+      "card_requires_higher_line_precision",
+      "card_contains_dense_instrument_or_anatomy_labels",
+      "canonical_resolver_returns_apply_ready_or_seal_ready"
+    ],
+    "never_add_for": [
+      "arbitrary_visual_variety"
+    ]
+  },
+  "surface_rules": {
+    "background": "clean_warm_ivory_near_F7F1E3",
+    "global_texture": "near_invisible",
+    "wet_wash": "forbidden_as_large_area_default",
+    "aged_paper": "forbidden",
+    "evidence_colors": "small_label_border_or_dot_only",
+    "evidence_palette_separate_from_art_palette": true
+  },
+  "governance": {
+    "authority": "proposal_only",
+    "runtime_lock_owner": "TP02",
+    "do_not_infer_medium_from_seed_name_or_mood": true,
+    "pending_media_requires_manual_review": true,
+    "atlas_version_and_blob_sha_must_match": true,
+    "full_atlas_in_renderer": false,
+    "full_3x3_card_reference": false,
+    "promotion_required": true
+  },
+  "avoid_default": [
+    "large_wet_wash",
+    "heavy_airbrush",
+    "glossy_enamel_surface",
+    "large_area_aged_paper",
+    "sepia_canvas_shift",
+    "too_many_competing_media"
+  ]
+}
