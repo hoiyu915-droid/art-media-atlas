@@ -1,0 +1,22 @@
+id: "clinical_soft_precise"
+name_zh: "柔和精確醫學衛教"
+purpose: "Friendly but precise clinical education infographic"
+base_medium: "M01"
+line_medium: "M39"
+reference_panels:
+  - "panels/M01/02__fingerprint.png"
+  - "panels/M01/05__portrait.png"
+  - "panels/M01/06__anatomy.png"
+  - "panels/M39/02__fingerprint.png"
+  - "panels/M39/09__micro-technique.png"
+texture_strength: 0.55
+preserve_infographic_geometry: true
+avoid:
+  - "reference_grid_layout"
+  - "copied_labels_or_fake_text"
+  - "pomegranate_motif"
+  - "decorative_anatomy_presented_as_medical_evidence"
+governance:
+  visual_style_only: true
+  medical_claims_require_separate_evidence_validation: true
+  visible_numbers_require_post_render_audit: true

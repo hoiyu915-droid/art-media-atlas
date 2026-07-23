@@ -1,0 +1,29 @@
+{
+  "id": "M02",
+  "name_zh": "水粉",
+  "name_en": "Gouache",
+  "family": "wet_paint",
+  "scores": {
+    "opacity": 4,
+    "line_precision": 3,
+    "medical_label_legibility": 4,
+    "portrait_fit": 5,
+    "anatomy_fit": 3,
+    "scene_fit": 4,
+    "public_health_fit": 4,
+    "archive_fit": 2,
+    "digital_fit": 3
+  },
+  "recommended_line_partner": [
+    "M17",
+    "M39"
+  ],
+  "reference_panels": [
+    "panels/M02/02__fingerprint.png",
+    "panels/M02/05__portrait.png",
+    "panels/M02/06__anatomy.png",
+    "panels/M02/09__micro-technique.png"
+  ],
+  "status": "pilot_visual_estimate",
+  "review_note": "Scores are practical visual estimates and should be revised after controlled smoke tests."
+}
