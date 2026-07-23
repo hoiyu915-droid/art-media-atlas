@@ -6,8 +6,9 @@ inside medical and research-infographic workflows.
 ## Files
 
 - `MIXED_MEDIA_GUIDELINE_v1.md` — human-readable mixed-media rules.
-- `media_role_matrix_v1.csv` — 75-row review table.
-- `media_role_matrix_v1.json` — machine-readable copy of the matrix.
+- `media_role_matrix_v1.csv` — canonical 75-row review table for this proposal.
+- `media_role_matrix_v1.json` — machine-readable schema, source pins, counts, and CSV pointer.
+- `pairing_recipes_v1.csv` — eight starting recipes.
 - `seed14_default_media_policy.provisional.json` — proposal for the M17 + M22 SEED14 default.
 
 ## Source pins
