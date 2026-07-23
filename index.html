@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Art Media Atlas｜75 種藝術媒材圖譜</title>
+  <meta name="description" content="以一致九宮格測試框架，比較 M01–M75 共 75 種傳統、攝影、工藝與數位藝術媒材。">
+  <meta name="theme-color" content="#123a35">
+  <meta property="og:title" content="Art Media Atlas｜75 種藝術媒材圖譜">
+  <meta property="og:description" content="瀏覽、搜尋、比較並分享 75 種藝術媒材圖卡。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://hoiyu915-droid.github.io/art-media-atlas/Media/social-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #14322e;
+      --ink-soft: #4e625e;
+      --green: #123a35;
+      --green-2: #245c53;
+      --mint: #dce9e2;
+      --paper: #f4efe4;
+      --paper-2: #ebe3d4;
+      --white: #fffdf8;
+      --line: rgba(20, 50, 46, 0.17);
+      --shadow: 0 16px 45px rgba(32, 50, 44, 0.12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% -10%, rgba(255,255,255,.95), transparent 32rem),
+        linear-gradient(180deg, var(--paper) 0%, #f8f5ed 55%, var(--paper-2) 100%);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Segoe UI", sans-serif;
+      min-height: 100vh;
+    }
+
+    button, input, select { font: inherit; }
+
+    button { color: inherit; }
+
+    a { color: inherit; }
+
+    .shell { width: min(1440px, calc(100% - 40px)); margin: 0 auto; }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 78px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      color: var(--paper);
+      background: var(--green);
+      font-size: 13px;
+      letter-spacing: .08em;
+    }
+
+    .header-note { color: var(--ink-soft); font-size: 14px; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(380px, .96fr);
+      gap: clamp(34px, 6vw, 92px);
+      align-items: center;
+      padding: clamp(54px, 8vw, 108px) 0 76px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 18px;
+      color: var(--green-2);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 3px;
+      border-radius: 999px;
+      background: #b15642;
+    }
+
+    h1 {
+      max-width: 790px;
+      margin: 0;
+      font-family: ui-serif, "Songti TC", "Noto Serif TC", Georgia, serif;
+      font-size: clamp(48px, 7.3vw, 104px);
+      font-weight: 700;
+      line-height: .99;
+      letter-spacing: -.055em;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      margin: 26px 0 0;
+      color: var(--ink-soft);
+      font-size: clamp(17px, 1.55vw, 21px);
+      line-height: 1.72;
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .stat {
+      min-width: 126px;
+      padding: 16px 20px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 253, 248, .62);
+      backdrop-filter: blur(8px);
+    }
+
+    .stat strong { display: block; font-size: 25px; line-height: 1; }
+    .stat span { display: block; margin-top: 7px; color: var(--ink-soft); font-size: 13px; }
+
+    .hero-mosaic {
+      position: relative;
+      min-height: 510px;
+    }
+
+    .hero-mosaic::before {
+      content: "";
+      position: absolute;
+      inset: 7% 2% 2% 10%;
+      border-radius: 40% 18% 28% 16%;
+      background: var(--green);
+      transform: rotate(-2deg);
+    }
+
+    .hero-tile {
+      position: absolute;
+      overflow: hidden;
+      border: 7px solid var(--white);
+      border-radius: 18px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-tile img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .hero-tile:nth-child(1) { width: 58%; aspect-ratio: 1.5; left: 0; top: 0; transform: rotate(-4deg); }
+    .hero-tile:nth-child(2) { width: 54%; aspect-ratio: 1.5; right: 0; top: 17%; transform: rotate(3deg); }
+    .hero-tile:nth-child(3) { width: 52%; aspect-ratio: 1.5; left: 7%; bottom: 3%; transform: rotate(2deg); }
+    .hero-tile:nth-child(4) { width: 44%; aspect-ratio: 1.5; right: 2%; bottom: 0; transform: rotate(-3deg); }
+
+    .collection {
+      padding: 40px 0 88px;
+      border-top: 1px solid var(--line);
+    }
+
+    .collection-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: ui-serif, "Songti TC", "Noto Serif TC", Georgia, serif;
+      font-size: clamp(34px, 4vw, 58px);
+      letter-spacing: -.035em;
+    }
+
+    .collection-heading p { margin: 0; color: var(--ink-soft); line-height: 1.6; }
+
+    .toolbar {
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) 220px 190px;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 253, 248, .91);
+      box-shadow: 0 12px 32px rgba(30, 47, 43, .1);
+      backdrop-filter: blur(16px);
+    }
+
+    .field { position: relative; }
+
+    .field-search::before {
+      content: "⌕";
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-52%);
+      color: var(--ink-soft);
+      font-size: 24px;
+      pointer-events: none;
+    }
+
+    input, select {
+      width: 100%;
+      height: 48px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--ink);
+      background: var(--white);
+      outline: none;
+    }
+
+    input { padding: 0 15px 0 43px; }
+    select { padding: 0 38px 0 14px; }
+    input:focus, select:focus { border-color: var(--green-2); box-shadow: 0 0 0 3px rgba(36, 92, 83, .13); }
+
+    .results-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 68px;
+      gap: 20px;
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+
+    .clear-button {
+      border: 0;
+      padding: 8px 0;
+      color: var(--green-2);
+      background: transparent;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .clear-button[hidden] { display: none; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: clamp(16px, 2.1vw, 28px);
+    }
+
+    .media-card {
+      display: block;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      text-align: left;
+      background: var(--white);
+      box-shadow: 0 7px 20px rgba(31, 46, 42, .07);
+      cursor: zoom-in;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .media-card:hover, .media-card:focus-visible {
+      transform: translateY(-5px);
+      border-color: rgba(18, 58, 53, .38);
+      box-shadow: var(--shadow);
+      outline: none;
+    }
+
+    .thumb-wrap { position: relative; overflow: hidden; aspect-ratio: 1.5; background: #e9e2d4; }
+    .thumb-wrap img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .35s ease; }
+    .media-card:hover .thumb-wrap img { transform: scale(1.025); }
+
+    .id-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 7px 10px;
+      border-radius: 9px;
+      color: var(--white);
+      background: rgba(18, 58, 53, .94);
+      box-shadow: 0 4px 13px rgba(0,0,0,.15);
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: .06em;
+    }
+
+    .card-body { padding: 18px 19px 19px; }
+    .card-body h3 { margin: 0; font-size: 20px; letter-spacing: -.02em; }
+    .english { margin: 5px 0 0; color: var(--ink-soft); font-size: 14px; }
+
+    .tag {
+      display: inline-flex;
+      margin-top: 15px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      color: var(--green-2);
+      background: var(--mint);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      padding: 80px 20px;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      color: var(--ink-soft);
+      text-align: center;
+      background: rgba(255,255,255,.35);
+    }
+
+    .site-footer {
+      padding: 34px 0 48px;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    dialog {
+      width: min(1280px, calc(100vw - 28px));
+      max-height: calc(100vh - 28px);
+      padding: 0;
+      overflow: hidden;
+      border: 0;
+      border-radius: 24px;
+      color: var(--ink);
+      background: var(--white);
+      box-shadow: 0 30px 90px rgba(0,0,0,.4);
+    }
+
+    dialog::backdrop { background: rgba(8, 24, 22, .82); backdrop-filter: blur(8px); }
+
+    .viewer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 18px 16px 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .viewer-title { min-width: 0; }
+    .viewer-title strong { font-size: 18px; }
+    .viewer-title span { display: block; margin-top: 3px; color: var(--ink-soft); font-size: 13px; }
+
+    .viewer-actions { display: flex; gap: 8px; }
+    .viewer-actions button, .viewer-actions a {
+      display: inline-grid;
+      place-items: center;
+      min-height: 42px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      text-decoration: none;
+      background: var(--white);
+      font-size: 13px;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .viewer-actions .close { width: 42px; padding: 0; color: var(--white); border-color: var(--green); background: var(--green); font-size: 22px; }
+
+    .viewer-stage {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 300px;
+      max-height: calc(100vh - 104px);
+      padding: 18px 64px;
+      overflow: auto;
+      background: #e7e1d7;
+    }
+
+    .viewer-stage img {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      max-height: calc(100vh - 142px);
+      border-radius: 9px;
+      box-shadow: 0 10px 38px rgba(0,0,0,.18);
+    }
+
+    .nav-button {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 54px;
+      transform: translateY(-50%);
+      border: 0;
+      border-radius: 12px;
+      color: var(--white);
+      background: rgba(18, 58, 53, .84);
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .nav-button.prev { left: 12px; }
+    .nav-button.next { right: 12px; }
+
+    .toast {
+      position: fixed;
+      z-index: 100;
+      left: 50%;
+      bottom: 22px;
+      transform: translate(-50%, 20px);
+      padding: 11px 16px;
+      border-radius: 999px;
+      color: var(--white);
+      background: var(--green);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+      font-size: 13px;
+      box-shadow: var(--shadow);
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-mosaic { min-height: 470px; max-width: 680px; width: 100%; margin: 0 auto; }
+      .toolbar { grid-template-columns: 1fr 1fr; }
+      .field-search { grid-column: 1 / -1; }
+      .collection-heading { align-items: start; flex-direction: column; }
+    }
+
+    @media (max-width: 600px) {
+      .shell { width: min(100% - 24px, 1440px); }
+      .site-header { min-height: 66px; }
+      .header-note { display: none; }
+      .hero { padding: 46px 0 62px; }
+      .hero-mosaic { min-height: 340px; }
+      .stats { display: grid; grid-template-columns: repeat(3, 1fr); }
+      .stat { min-width: 0; padding: 14px 12px; }
+      .stat strong { font-size: 21px; }
+      .toolbar { top: 6px; grid-template-columns: 1fr; }
+      .field-search { grid-column: auto; }
+      .gallery { grid-template-columns: 1fr; }
+      .viewer-head { align-items: flex-start; }
+      .viewer-actions button:not(.close), .viewer-actions a { display: none; }
+      .viewer-stage { padding: 10px 44px; }
+      .nav-button { width: 34px; height: 46px; }
+      .nav-button.prev { left: 5px; }
+      .nav-button.next { right: 5px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell site-header">
+    <a class="brand" href="#top" aria-label="Art Media Atlas 首頁">
+      <span class="brand-mark">AMA</span>
+      <span>Art Media Atlas</span>
+    </a>
+    <span class="header-note">M01–M75 · Visual reference collection</span>
+  </header>
+
+  <main id="top">
+    <section class="shell hero">
+      <div>
+        <p class="eyebrow">Comparative visual atlas</p>
+        <h1>媒材，不只是一種濾鏡。</h1>
+        <p class="hero-copy">75 種藝術媒材，以相同的九宮格題目測試。從水彩、木刻到藍曬與向量插畫，快速看出每一種媒材如何處理筆觸、人物、解剖、場景與資訊圖。</p>
+        <div class="stats" aria-label="圖譜統計">
+          <div class="stat"><strong>75</strong><span>完整媒材圖卡</span></div>
+          <div class="stat"><strong>9</strong><span>一致測試面板</span></div>
+          <div class="stat"><strong>6</strong><span>主要媒材類別</span></div>
+        </div>
+      </div>
+      <div class="hero-mosaic" aria-label="媒材圖卡預覽">
+        <figure class="hero-tile"><img src="Media/thumbnails/M01.jpg" alt="M01 水彩圖卡預覽"></figure>
+        <figure class="hero-tile"><img src="Media/thumbnails/M39.jpg" alt="M39 針管筆圖卡預覽"></figure>
+        <figure class="hero-tile"><img src="Media/thumbnails/M51.jpg" alt="M51 藍曬圖卡預覽"></figure>
+        <figure class="hero-tile"><img src="Media/thumbnails/M74.jpg" alt="M74 向量插畫圖卡預覽"></figure>
+      </div>
+    </section>
+
+    <section class="collection" aria-labelledby="collection-title">
+      <div class="shell">
+        <div class="collection-heading">
+          <div>
+            <p class="eyebrow">Explore the collection</p>
+            <h2 id="collection-title">瀏覽 75 種媒材</h2>
+          </div>
+          <p>搜尋編號、中英文名稱，或依媒材類別篩選。<br>點擊圖卡即可檢視完整原圖並分享單卡連結。</p>
+        </div>
+
+        <div class="toolbar" role="search" aria-label="媒材搜尋與篩選">
+          <label class="field field-search">
+            <span class="sr-only" hidden>搜尋媒材</span>
+            <input id="search" type="search" placeholder="搜尋 M39、針管筆或 Technical Pen…" autocomplete="off">
+          </label>
+          <label class="field">
+            <span class="sr-only" hidden>媒材類別</span>
+            <select id="category" aria-label="媒材類別">
+              <option value="all">全部類別</option>
+              <option value="paint">顏料與流動媒材</option>
+              <option value="drawing">素描與線條</option>
+              <option value="print">版畫與印刷</option>
+              <option value="craft">工藝與表面</option>
+              <option value="photo">攝影工藝</option>
+              <option value="digital">數位製作</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="sr-only" hidden>排序方式</span>
+            <select id="sort" aria-label="排序方式">
+              <option value="id">依圖卡編號</option>
+              <option value="zh">依中文名稱</option>
+              <option value="en">依英文名稱</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="results-bar" aria-live="polite">
+          <span id="result-count">正在載入圖譜…</span>
+          <button id="clear" class="clear-button" type="button" hidden>清除搜尋與篩選</button>
+        </div>
+
+        <div id="gallery" class="gallery"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell site-footer">
+    <strong>使用界線：</strong>這是一套視覺媒材參考圖譜，不是工藝安全、歷史或醫學證據。圖卡內文字可能包含生成錯誤；請勿直接作為專業引用。
+  </footer>
+
+  <dialog id="viewer" aria-labelledby="viewer-name">
+    <div class="viewer-head">
+      <div class="viewer-title">
+        <strong id="viewer-name"></strong>
+        <span id="viewer-meta"></span>
+      </div>
+      <div class="viewer-actions">
+        <button id="copy-link" type="button">複製單卡連結</button>
+        <a id="open-original" href="#" target="_blank" rel="noopener">開啟原圖</a>
+        <button id="close-viewer" class="close" type="button" aria-label="關閉">×</button>
+      </div>
+    </div>
+    <div class="viewer-stage">
+      <button id="previous" class="nav-button prev" type="button" aria-label="上一張">‹</button>
+      <img id="viewer-image" alt="">
+      <button id="next" class="nav-button next" type="button" aria-label="下一張">›</button>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">連結已複製</div>
+
+  <script>
+    const GROUPS = {
+      paint: { label: "顏料與流動媒材", families: ["wet_paint", "fluid_ink", "sprayed_color"] },
+      drawing: { label: "素描與線條", families: ["drawing_ink", "dry_drawing", "metalpoint", "drawing_surface"] },
+      print: { label: "版畫與印刷", families: ["printmaking"] },
+      craft: { label: "工藝與表面", families: ["craft_surface", "wall_surface", "wax_medium", "assembled_surface", "granular_surface", "textile", "marbling", "decorated_paper", "transfer_texture"] },
+      photo: { label: "攝影工藝", families: ["photographic"] },
+      digital: { label: "數位製作", families: ["digital_output", "digital_creation"] }
+    };
+
+    const state = { media: [], visible: [], currentId: null };
+    const gallery = document.querySelector("#gallery");
+    const search = document.querySelector("#search");
+    const category = document.querySelector("#category");
+    const sort = document.querySelector("#sort");
+    const resultCount = document.querySelector("#result-count");
+    const clear = document.querySelector("#clear");
+    const viewer = document.querySelector("#viewer");
+    const viewerName = document.querySelector("#viewer-name");
+    const viewerMeta = document.querySelector("#viewer-meta");
+    const viewerImage = document.querySelector("#viewer-image");
+    const openOriginal = document.querySelector("#open-original");
+    const toast = document.querySelector("#toast");
+
+    function groupFor(family) {
+      return Object.entries(GROUPS).find(([, value]) => value.families.includes(family))?.[0] || "craft";
+    }
+
+    function normalize(value) {
+      return value.toLocaleLowerCase("zh-Hant").replace(/[\s_-]+/g, "");
+    }
+
+    function makeCard(item, index) {
+      const button = document.createElement("button");
+      const group = groupFor(item.family);
+      button.type = "button";
+      button.className = "media-card";
+      button.setAttribute("aria-label", `檢視 ${item.id} ${item.name_zh} ${item.name_en}`);
+
+      const thumbWrap = document.createElement("div");
+      thumbWrap.className = "thumb-wrap";
+      const image = document.createElement("img");
+      image.src = `Media/thumbnails/${item.id}.jpg`;
+      image.alt = `${item.id} ${item.name_zh}（${item.name_en}）圖卡縮圖`;
+      image.loading = index < 8 ? "eager" : "lazy";
+      image.decoding = "async";
+      const badge = document.createElement("span");
+      badge.className = "id-badge";
+      badge.textContent = item.id;
+      thumbWrap.append(image, badge);
+
+      const body = document.createElement("div");
+      body.className = "card-body";
+      const title = document.createElement("h3");
+      title.textContent = item.name_zh;
+      const english = document.createElement("p");
+      english.className = "english";
+      english.textContent = item.name_en;
+      const tag = document.createElement("span");
+      tag.className = "tag";
+      tag.textContent = GROUPS[group].label;
+      body.append(title, english, tag);
+      button.append(thumbWrap, body);
+      button.addEventListener("click", () => openViewer(item.id, true));
+      return button;
+    }
+
+    function render() {
+      const query = normalize(search.value.trim());
+      const selectedGroup = category.value;
+      state.visible = state.media.filter(item => {
+        const haystack = normalize(`${item.id} ${item.name_zh} ${item.name_en} ${item.family}`);
+        const matchesSearch = !query || haystack.includes(query);
+        const matchesGroup = selectedGroup === "all" || groupFor(item.family) === selectedGroup;
+        return matchesSearch && matchesGroup;
+      });
+
+      state.visible.sort((a, b) => {
+        if (sort.value === "zh") return a.name_zh.localeCompare(b.name_zh, "zh-Hant");
+        if (sort.value === "en") return a.name_en.localeCompare(b.name_en, "en");
+        return a.id.localeCompare(b.id, "en", { numeric: true });
+      });
+
+      gallery.replaceChildren();
+      if (!state.visible.length) {
+        const empty = document.createElement("div");
+        empty.className = "empty";
+        empty.textContent = "找不到符合條件的媒材。可以試試圖卡編號、中文名稱或英文名稱。";
+        gallery.append(empty);
+      } else {
+        gallery.append(...state.visible.map(makeCard));
+      }
+
+      resultCount.textContent = `顯示 ${state.visible.length}／${state.media.length} 張圖卡`;
+      clear.hidden = !query && selectedGroup === "all" && sort.value === "id";
+    }
+
+    function openViewer(id, updateHash = false) {
+      const item = state.media.find(entry => entry.id === id);
+      if (!item) return;
+      state.currentId = id;
+      const group = groupFor(item.family);
+      const source = `Media/${item.card}`;
+      viewerName.textContent = `${item.id} · ${item.name_zh}`;
+      viewerMeta.textContent = `${item.name_en} · ${GROUPS[group].label}`;
+      viewerImage.src = source;
+      viewerImage.alt = `${item.id} ${item.name_zh}（${item.name_en}）完整圖卡`;
+      openOriginal.href = source;
+      if (!viewer.open) viewer.showModal();
+      if (updateHash) history.replaceState(null, "", `#${id}`);
+    }
+
+    function navigate(direction) {
+      const list = state.visible.length ? state.visible : state.media;
+      const index = list.findIndex(item => item.id === state.currentId);
+      const nextIndex = (index + direction + list.length) % list.length;
+      openViewer(list[nextIndex].id, true);
+    }
+
+    function closeViewer() {
+      viewer.close();
+      state.currentId = null;
+      history.replaceState(null, "", `${location.pathname}${location.search}`);
+      viewerImage.removeAttribute("src");
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+
+    async function copyLink() {
+      const url = new URL(location.href);
+      url.hash = state.currentId || "";
+      try {
+        await navigator.clipboard.writeText(url.href);
+        showToast("單卡連結已複製");
+      } catch {
+        window.prompt("複製這個連結：", url.href);
+      }
+    }
+
+    [search, category, sort].forEach(control => control.addEventListener("input", render));
+    clear.addEventListener("click", () => {
+      search.value = "";
+      category.value = "all";
+      sort.value = "id";
+      render();
+      search.focus();
+    });
+    document.querySelector("#close-viewer").addEventListener("click", closeViewer);
+    document.querySelector("#copy-link").addEventListener("click", copyLink);
+    document.querySelector("#previous").addEventListener("click", () => navigate(-1));
+    document.querySelector("#next").addEventListener("click", () => navigate(1));
+    viewer.addEventListener("click", event => { if (event.target === viewer) closeViewer(); });
+    viewer.addEventListener("cancel", event => { event.preventDefault(); closeViewer(); });
+    document.addEventListener("keydown", event => {
+      if (!viewer.open) return;
+      if (event.key === "ArrowLeft") navigate(-1);
+      if (event.key === "ArrowRight") navigate(1);
+    });
+
+    fetch("Media/manifest.json")
+      .then(response => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then(manifest => {
+        state.media = manifest.media;
+        render();
+        const initialId = location.hash.slice(1).toUpperCase();
+        if (/^M\d{2}$/.test(initialId)) openViewer(initialId, false);
+      })
+      .catch(error => {
+        console.error(error);
+        resultCount.textContent = "圖譜載入失敗";
+        gallery.innerHTML = '<div class="empty">無法讀取媒材資料。請重新整理頁面，或稍後再試。</div>';
+      });
+  </script>
+</body>
+</html>

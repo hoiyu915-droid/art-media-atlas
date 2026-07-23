@@ -1,0 +1,28 @@
+{
+  "id": "M69",
+  "name_zh": "鉑鈀印相",
+  "name_en": "Platinum-Palladium Print",
+  "family": "photographic",
+  "scores": {
+    "opacity": 3,
+    "line_precision": 2,
+    "medical_label_legibility": 2,
+    "portrait_fit": 5,
+    "anatomy_fit": 2,
+    "scene_fit": 5,
+    "public_health_fit": 2,
+    "archive_fit": 5,
+    "digital_fit": 2
+  },
+  "recommended_line_partner": [
+    "M39"
+  ],
+  "reference_panels": [
+    "panels/M69/02__fingerprint.png",
+    "panels/M69/05__portrait.png",
+    "panels/M69/06__anatomy.png",
+    "panels/M69/09__micro-technique.png"
+  ],
+  "status": "pilot_visual_estimate",
+  "review_note": "Scores are practical visual estimates and should be revised after controlled smoke tests."
+}

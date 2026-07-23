@@ -1,0 +1,29 @@
+{
+  "id": "M22",
+  "name_zh": "石墨鉛筆",
+  "name_en": "Graphite",
+  "family": "dry_drawing",
+  "scores": {
+    "opacity": 2,
+    "line_precision": 5,
+    "medical_label_legibility": 4,
+    "portrait_fit": 4,
+    "anatomy_fit": 5,
+    "scene_fit": 3,
+    "public_health_fit": 2,
+    "archive_fit": 4,
+    "digital_fit": 2
+  },
+  "recommended_line_partner": [
+    "M01",
+    "M19"
+  ],
+  "reference_panels": [
+    "panels/M22/02__fingerprint.png",
+    "panels/M22/05__portrait.png",
+    "panels/M22/06__anatomy.png",
+    "panels/M22/09__micro-technique.png"
+  ],
+  "status": "pilot_visual_estimate",
+  "review_note": "Scores are practical visual estimates and should be revised after controlled smoke tests."
+}

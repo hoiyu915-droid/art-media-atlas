@@ -1,0 +1,24 @@
+id: "M50"
+name_zh: "孔版印刷"
+name_en: "Risograph"
+family: "printmaking"
+scores:
+  opacity: 4
+  line_precision: 4
+  medical_label_legibility: 5
+  portrait_fit: 3
+  anatomy_fit: 4
+  scene_fit: 4
+  public_health_fit: 5
+  archive_fit: 3
+  digital_fit: 4
+recommended_line_partner:
+  - "M39"
+  - "M74"
+reference_panels:
+  - "panels/M50/02__fingerprint.png"
+  - "panels/M50/05__portrait.png"
+  - "panels/M50/06__anatomy.png"
+  - "panels/M50/09__micro-technique.png"
+status: "pilot_visual_estimate"
+review_note: "Scores are practical visual estimates and should be revised after controlled smoke tests."

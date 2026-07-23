@@ -1,0 +1,29 @@
+{
+  "id": "M06",
+  "name_zh": "蛋彩",
+  "name_en": "Egg Tempera",
+  "family": "wet_paint",
+  "scores": {
+    "opacity": 4,
+    "line_precision": 3,
+    "medical_label_legibility": 4,
+    "portrait_fit": 5,
+    "anatomy_fit": 4,
+    "scene_fit": 4,
+    "public_health_fit": 3,
+    "archive_fit": 5,
+    "digital_fit": 2
+  },
+  "recommended_line_partner": [
+    "M24",
+    "M39"
+  ],
+  "reference_panels": [
+    "panels/M06/02__fingerprint.png",
+    "panels/M06/05__portrait.png",
+    "panels/M06/06__anatomy.png",
+    "panels/M06/09__micro-technique.png"
+  ],
+  "status": "pilot_visual_estimate",
+  "review_note": "Scores are practical visual estimates and should be revised after controlled smoke tests."
+}

@@ -1,0 +1,25 @@
+id: "M17"
+name_zh: "色鉛筆"
+name_en: "Colored Pencil"
+family: "dry_drawing"
+scores:
+  opacity: 3
+  line_precision: 4
+  medical_label_legibility: 4
+  portrait_fit: 5
+  anatomy_fit: 4
+  scene_fit: 4
+  public_health_fit: 3
+  archive_fit: 2
+  digital_fit: 3
+recommended_line_partner:
+  - "M01"
+  - "M02"
+  - "M39"
+reference_panels:
+  - "panels/M17/02__fingerprint.png"
+  - "panels/M17/05__portrait.png"
+  - "panels/M17/06__anatomy.png"
+  - "panels/M17/09__micro-technique.png"
+status: "pilot_visual_estimate"
+review_note: "Scores are practical visual estimates and should be revised after controlled smoke tests."

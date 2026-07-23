@@ -1,0 +1,24 @@
+id: "M40"
+name_zh: "印度墨"
+name_en: "India Ink"
+family: "drawing_ink"
+scores:
+  opacity: 5
+  line_precision: 5
+  medical_label_legibility: 5
+  portrait_fit: 4
+  anatomy_fit: 5
+  scene_fit: 4
+  public_health_fit: 4
+  archive_fit: 4
+  digital_fit: 3
+recommended_line_partner:
+  - "M01"
+  - "M43"
+reference_panels:
+  - "panels/M40/02__fingerprint.png"
+  - "panels/M40/05__portrait.png"
+  - "panels/M40/06__anatomy.png"
+  - "panels/M40/09__micro-technique.png"
+status: "pilot_visual_estimate"
+review_note: "Scores are practical visual estimates and should be revised after controlled smoke tests."
