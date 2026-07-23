@@ -48,9 +48,44 @@ def image_size(path: Path) -> tuple[int, int]:
 
 def main() -> None:
     manifest = json.loads((ROOT / "manifest.json").read_text(encoding="utf-8"))
+    assert manifest["$schema"] == "schemas/media-atlas.schema.json"
+    assert manifest["atlas_id"] == "art-media-atlas"
+    assert manifest["schema_version"] == "1.0.0"
+    assert manifest["repository"] == "hoiyu915-droid/art-media-atlas"
+    assert manifest["resolver_contract"]["decision_actions"] == [
+        "KEEP_NATIVE",
+        "ADD_PARTNER",
+        "REPLACE_BASE",
+        "BLOCK",
+    ]
     media = manifest["media"]
     assert len(media) == 75, f"Expected 75 manifest records, found {len(media)}"
     assert sorted(item["id"] for item in media) == [f"M{i:02d}" for i in range(1, 76)]
+
+    score_fields = set(manifest["capability_scale"]["fields"])
+    automatic = [item for item in media if item["resolver"]["automatic_use_allowed"]]
+    assert len(automatic) == manifest["automatic_candidate_count"] == 12
+    for item in media:
+        assert set(item["capabilities"]) == score_fields, f"Capability fields drift: {item['id']}"
+        assert all(1 <= value <= 5 for value in item["capabilities"].values())
+        assert item["mechanisms"], f"Missing mechanisms: {item['id']}"
+        assert item["recommended_roles"], f"Missing roles: {item['id']}"
+        assert item["avoid"], f"Missing avoid rules: {item['id']}"
+        resolver = item["resolver"]
+        assert resolver["automatic_use_allowed"] != resolver["manual_review_required"]
+        if resolver["automatic_use_allowed"]:
+            assert resolver["assessment_basis"] == "pilot_visual_estimate"
+            assert len(item["assets"]["reference_panels"]) == 4
+        else:
+            assert resolver["assessment_basis"] == "family_default_estimate"
+            assert item["assets"]["reference_panels"] == []
+
+        for asset_name in ("card", "thumbnail"):
+            asset = ROOT.parent / item["assets"][asset_name]
+            assert asset.is_file(), f"Missing {asset_name}: {asset}"
+        for panel_path in item["assets"]["reference_panels"]:
+            panel = ROOT.parent / panel_path
+            assert panel.is_file(), f"Missing reference panel: {panel}"
 
     cards = [ROOT / item["card"] for item in media]
     assert len(set(cards)) == 75
@@ -72,6 +107,10 @@ def main() -> None:
     for thumbnail in thumbnails:
         assert image_size(thumbnail) == (600, 400), f"Unexpected thumbnail size: {thumbnail}"
     assert image_size(ROOT / "social-preview.jpg") == (1200, 630)
+    schema = ROOT / "schemas" / "media-atlas.schema.json"
+    assert schema.is_file(), "Missing resolver JSON Schema"
+    schema_data = json.loads(schema.read_text(encoding="utf-8"))
+    assert schema_data["$schema"] == "https://json-schema.org/draft/2020-12/schema"
     index = ROOT.parent / "index.html"
     assert index.is_file(), "Missing root index.html"
     index_text = index.read_text(encoding="utf-8")
@@ -80,7 +119,10 @@ def main() -> None:
     assert (ROOT / "recipes" / "clinical-soft-precise.yaml").is_file()
     assert (ROOT / "panels" / "crop-calibration.json").is_file()
 
-    print("Media Atlas validation passed: 75 cards, 75 thumbnails, 12 profiles, 48 panels.")
+    print(
+        "Media Atlas validation passed: 75 resolver records, 75 cards, "
+        "75 thumbnails, 12 automatic candidates, 48 reference panels."
+    )
 
 
 if __name__ == "__main__":

@@ -18,38 +18,40 @@ PURPOSES = {
 }
 
 
-def read_profile(mid: str) -> dict | None:
-    path = ROOT / "profiles" / f"{mid}.json"
-    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
-
-
 def cmd_list(_: argparse.Namespace) -> None:
     for item in MANIFEST["media"]:
-        print(f'{item["id"]}  {item["name_zh"]:<12} {item["name_en"]:<28} {item["family"]:<18} {item["profile_status"]}')
+        resolver = item["resolver"]
+        eligibility = "auto" if resolver["automatic_use_allowed"] else "review"
+        print(
+            f'{item["id"]}  {item["name_zh"]:<12} {item["name_en"]:<28} '
+            f'{item["family"]:<18} {eligibility}'
+        )
 
 
 def cmd_show(args: argparse.Namespace) -> None:
     mid = args.id.upper()
     if mid not in MEDIA:
         raise SystemExit(f"Unknown medium: {mid}")
-    profile = read_profile(mid)
-    print(json.dumps({"manifest": MEDIA[mid], "profile": profile}, ensure_ascii=False, indent=2))
+    print(json.dumps(MEDIA[mid], ensure_ascii=False, indent=2))
 
 
 def cmd_select(args: argparse.Namespace) -> None:
     weights = PURPOSES[args.purpose]
     ranked = []
     for mid, item in MEDIA.items():
-        profile = read_profile(mid)
-        if not profile:
+        if not args.include_review and not item["resolver"]["automatic_use_allowed"]:
             continue
-        scores = profile["scores"]
+        scores = item["capabilities"]
         total = sum(scores[key] * weight for key, weight in weights)
-        ranked.append((total, mid, item, profile))
+        ranked.append((total, mid, item))
     ranked.sort(key=lambda row: (-row[0], row[1]))
-    for total, mid, item, profile in ranked[: args.limit]:
-        partners = ", ".join(profile["recommended_line_partner"])
-        print(f'{mid}  score={total:>2}  {item["name_zh"]} / {item["name_en"]}  partners={partners}')
+    for total, mid, item in ranked[: args.limit]:
+        partners = ", ".join(partner["id"] for partner in item["compatible_partners"]) or "-"
+        basis = item["resolver"]["assessment_basis"]
+        print(
+            f'{mid}  score={total:>2}  {item["name_zh"]} / {item["name_en"]}  '
+            f'partners={partners}  basis={basis}'
+        )
 
 
 def cmd_recipe(args: argparse.Namespace) -> None:
@@ -60,16 +62,21 @@ def cmd_recipe(args: argparse.Namespace) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Query the Media Atlas pilot")
+    parser = argparse.ArgumentParser(description="Query the resolver-ready Media Atlas")
     sub = parser.add_subparsers(required=True)
     p_list = sub.add_parser("list", help="List all 75 media")
     p_list.set_defaults(func=cmd_list)
-    p_show = sub.add_parser("show", help="Show one medium and its pilot profile")
+    p_show = sub.add_parser("show", help="Show one resolver-ready medium record")
     p_show.add_argument("id")
     p_show.set_defaults(func=cmd_show)
-    p_select = sub.add_parser("select", help="Rank the 12 pilot media for a purpose")
+    p_select = sub.add_parser("select", help="Rank media for a purpose")
     p_select.add_argument("purpose", choices=sorted(PURPOSES))
     p_select.add_argument("--limit", type=int, default=5)
+    p_select.add_argument(
+        "--include-review",
+        action="store_true",
+        help="Include low-confidence family defaults that require manual review",
+    )
     p_select.set_defaults(func=cmd_select)
     p_recipe = sub.add_parser("recipe", help="Print a reusable recipe")
     p_recipe.add_argument("name")

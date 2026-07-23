@@ -17,7 +17,9 @@ The usable atlas is in [`Media/`](Media/README.md):
 - `Media/contact-sheets/` — visual QA and browsing sheets.
 - `Media/thumbnails/` — lightweight gallery thumbnails.
 - `Media/tools/atlas_cli.py` — local selector and query tool.
-- `Media/manifest.yaml` / `Media/manifest.json` / `Media/manifest.csv` — canonical index.
+- `Media/manifest.json` — canonical resolver-ready index shared by the gallery and machine consumers.
+- `Media/schemas/media-atlas.schema.json` — JSON Schema for external consumers.
+- `Media/manifest.yaml` / `Media/manifest.csv` — legacy convenience snapshots; not resolver truth.
 
 ## Quick use
 
@@ -26,6 +28,7 @@ python3 Media/tools/atlas_cli.py list
 python3 Media/tools/atlas_cli.py show M01
 python3 Media/tools/atlas_cli.py select clinical_soft --limit 5
 python3 Media/tools/atlas_cli.py select anatomy --limit 5
+python3 Media/tools/atlas_cli.py select anatomy --limit 5 --include-review
 python3 Media/tools/atlas_cli.py recipe clinical-soft-precise
 python3 Media/tools/validate_atlas.py
 ```

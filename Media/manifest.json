@@ -1,7 +1,50 @@
 {
-  "schema_version": "0.1.0",
-  "atlas_name": "Media Atlas M01-M75",
+  "$schema": "schemas/media-atlas.schema.json",
+  "atlas_id": "art-media-atlas",
+  "schema_version": "1.0.0",
+  "atlas_version": "2026.07.23",
+  "repository": "hoiyu915-droid/art-media-atlas",
+  "asset_path_base": "repository_root",
   "source_card_count": 75,
+  "automatic_candidate_count": 12,
+  "capability_scale": {
+    "minimum": 1,
+    "maximum": 5,
+    "meaning": "1 is weak fit; 5 is strong fit for the named visual task.",
+    "fields": [
+      "opacity",
+      "line_precision",
+      "medical_label_legibility",
+      "portrait_fit",
+      "anatomy_fit",
+      "scene_fit",
+      "public_health_fit",
+      "archive_fit",
+      "digital_fit"
+    ]
+  },
+  "resolver_contract": {
+    "consumer_inputs": [
+      "consumer",
+      "lane",
+      "card_requirements",
+      "current_seed_medium",
+      "requested_medium_ids"
+    ],
+    "decision_actions": [
+      "KEEP_NATIVE",
+      "ADD_PARTNER",
+      "REPLACE_BASE",
+      "BLOCK"
+    ],
+    "default_candidate_filter": "resolver.automatic_use_allowed == true",
+    "exploratory_candidate_filter": "all media; pending entries require manual review",
+    "default_fallback_medium": "M01",
+    "max_base_media": 1,
+    "max_partner_media": 2,
+    "full_cards_for_human_selection_only": true,
+    "generation_reference_policy": "Send only selected reference_panels, never the complete 3x3 card."
+  },
   "panel_policy": {
     "human_selection": "Use the complete card.",
     "model_reference": "Use only task-relevant cropped panels; do not use the full 3x3 card.",
@@ -24,750 +67,3707 @@
       "name_zh": "水彩",
       "name_en": "Watercolor",
       "family": "wet_paint",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M01__watercolor.jpeg",
       "source_sha256": "4c037891f601359a478001674ed89c83bca9ba409c17b90db99858a89b90a473",
-      "profile_status": "pilot"
+      "profile_status": "pilot",
+      "assets": {
+        "card": "Media/cards/M01__watercolor.jpeg",
+        "thumbnail": "Media/thumbnails/M01.jpg",
+        "reference_panels": [
+          "Media/panels/M01/02__fingerprint.png",
+          "Media/panels/M01/05__portrait.png",
+          "Media/panels/M01/06__anatomy.png",
+          "Media/panels/M01/09__micro-technique.png"
+        ]
+      },
+      "mechanisms": [
+        "layered_color",
+        "visible_brushwork",
+        "organic_edges"
+      ],
+      "capabilities": {
+        "opacity": 2,
+        "line_precision": 2,
+        "medical_label_legibility": 3,
+        "portrait_fit": 5,
+        "anatomy_fit": 3,
+        "scene_fit": 5,
+        "public_health_fit": 3,
+        "archive_fit": 2,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "base_medium"
+      ],
+      "compatible_partners": [
+        {
+          "id": "M08",
+          "role": "line_medium",
+          "automatic_pairing_allowed": false
+        },
+        {
+          "id": "M39",
+          "role": "line_medium",
+          "automatic_pairing_allowed": true
+        }
+      ],
+      "avoid": [
+        "uniform_digital_gradient",
+        "plastic_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": true,
+        "manual_review_required": false,
+        "assessment_basis": "pilot_visual_estimate",
+        "confidence": 0.72
+      }
     },
     {
       "id": "M02",
       "name_zh": "水粉",
       "name_en": "Gouache",
       "family": "wet_paint",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M02__gouache.png",
       "source_sha256": "6a9f859f17adf183e6e60c20c4f2570ff5c91e9bf2d41482d8a16a2afc92be1e",
-      "profile_status": "pilot"
+      "profile_status": "pilot",
+      "assets": {
+        "card": "Media/cards/M02__gouache.png",
+        "thumbnail": "Media/thumbnails/M02.jpg",
+        "reference_panels": [
+          "Media/panels/M02/02__fingerprint.png",
+          "Media/panels/M02/05__portrait.png",
+          "Media/panels/M02/06__anatomy.png",
+          "Media/panels/M02/09__micro-technique.png"
+        ]
+      },
+      "mechanisms": [
+        "layered_color",
+        "visible_brushwork",
+        "organic_edges"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 3,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 3,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 2,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium"
+      ],
+      "compatible_partners": [
+        {
+          "id": "M17",
+          "role": "base_medium",
+          "automatic_pairing_allowed": true
+        },
+        {
+          "id": "M39",
+          "role": "line_medium",
+          "automatic_pairing_allowed": true
+        }
+      ],
+      "avoid": [
+        "uniform_digital_gradient",
+        "plastic_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": true,
+        "manual_review_required": false,
+        "assessment_basis": "pilot_visual_estimate",
+        "confidence": 0.72
+      }
     },
     {
       "id": "M03",
       "name_zh": "廣告顏料",
       "name_en": "Poster Color",
       "family": "wet_paint",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M03__poster_color.png",
       "source_sha256": "7968b1e9d1d7b905dd8fbe96351138f3e1db1e362e78acec5de3b32047fb1a2c",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M03__poster_color.png",
+        "thumbnail": "Media/thumbnails/M03.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "layered_color",
+        "visible_brushwork",
+        "organic_edges"
+      ],
+      "capabilities": {
+        "opacity": 3,
+        "line_precision": 2,
+        "medical_label_legibility": 3,
+        "portrait_fit": 5,
+        "anatomy_fit": 3,
+        "scene_fit": 5,
+        "public_health_fit": 3,
+        "archive_fit": 2,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "base_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "uniform_digital_gradient",
+        "plastic_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M04",
       "name_zh": "壓克力",
       "name_en": "Acrylic",
       "family": "wet_paint",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M04__acrylic.png",
       "source_sha256": "15e6e6b5c0d1c75de072759638b4d47886a872ee464e76c6deb1b57655c328a9",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M04__acrylic.png",
+        "thumbnail": "Media/thumbnails/M04.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "layered_color",
+        "visible_brushwork",
+        "organic_edges"
+      ],
+      "capabilities": {
+        "opacity": 3,
+        "line_precision": 2,
+        "medical_label_legibility": 3,
+        "portrait_fit": 5,
+        "anatomy_fit": 3,
+        "scene_fit": 5,
+        "public_health_fit": 3,
+        "archive_fit": 2,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "base_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "uniform_digital_gradient",
+        "plastic_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M05",
       "name_zh": "油畫",
       "name_en": "Oil Paint",
       "family": "wet_paint",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M05__oil_paint.png",
       "source_sha256": "8c244eb2e214bfaff5389a5e0c6de512c1cd79d83d91f3b9006dc0c952f00659",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M05__oil_paint.png",
+        "thumbnail": "Media/thumbnails/M05.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "layered_color",
+        "visible_brushwork",
+        "organic_edges"
+      ],
+      "capabilities": {
+        "opacity": 3,
+        "line_precision": 2,
+        "medical_label_legibility": 3,
+        "portrait_fit": 5,
+        "anatomy_fit": 3,
+        "scene_fit": 5,
+        "public_health_fit": 3,
+        "archive_fit": 2,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "base_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "uniform_digital_gradient",
+        "plastic_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M06",
       "name_zh": "蛋彩",
       "name_en": "Egg Tempera",
       "family": "wet_paint",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M06__egg_tempera.png",
       "source_sha256": "159c0f8d091dfd70b27a4cd244aa96620344ede1b6c9206c68061f9ebaacbaf2",
-      "profile_status": "pilot"
+      "profile_status": "pilot",
+      "assets": {
+        "card": "Media/cards/M06__egg_tempera.png",
+        "thumbnail": "Media/thumbnails/M06.jpg",
+        "reference_panels": [
+          "Media/panels/M06/02__fingerprint.png",
+          "Media/panels/M06/05__portrait.png",
+          "Media/panels/M06/06__anatomy.png",
+          "Media/panels/M06/09__micro-technique.png"
+        ]
+      },
+      "mechanisms": [
+        "layered_color",
+        "visible_brushwork",
+        "organic_edges"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 3,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 3,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "base_medium"
+      ],
+      "compatible_partners": [
+        {
+          "id": "M24",
+          "role": "line_medium",
+          "automatic_pairing_allowed": false
+        },
+        {
+          "id": "M39",
+          "role": "line_medium",
+          "automatic_pairing_allowed": true
+        }
+      ],
+      "avoid": [
+        "uniform_digital_gradient",
+        "plastic_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": true,
+        "manual_review_required": false,
+        "assessment_basis": "pilot_visual_estimate",
+        "confidence": 0.72
+      }
     },
     {
       "id": "M07",
       "name_zh": "水墨",
       "name_en": "Ink Wash",
       "family": "drawing_ink",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M07__ink_wash.png",
       "source_sha256": "f0258f512e43dc0fddea2aaecd765e5a2d187b66da0eddd9b2d86f7095ad016c",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M07__ink_wash.png",
+        "thumbnail": "Media/thumbnails/M07.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "controlled_line_weight",
+        "hatching",
+        "ink_edge_definition"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 5,
+        "medical_label_legibility": 5,
+        "portrait_fit": 3,
+        "anatomy_fit": 5,
+        "scene_fit": 3,
+        "public_health_fit": 5,
+        "archive_fit": 4,
+        "digital_fit": 4
+      },
+      "recommended_roles": [
+        "line_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "soft_edge_only_rendering",
+        "line_free_airbrushed_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M08",
       "name_zh": "鋼筆墨水",
       "name_en": "Fountain Pen Ink",
       "family": "drawing_ink",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M08__fountain_pen_ink.png",
       "source_sha256": "ddbcf1678b40b842b0dd5119b250387f7fc501e0f59cd2bb9c5fa425a76d7a5b",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M08__fountain_pen_ink.png",
+        "thumbnail": "Media/thumbnails/M08.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "controlled_line_weight",
+        "hatching",
+        "ink_edge_definition"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 5,
+        "medical_label_legibility": 5,
+        "portrait_fit": 3,
+        "anatomy_fit": 5,
+        "scene_fit": 3,
+        "public_health_fit": 5,
+        "archive_fit": 4,
+        "digital_fit": 4
+      },
+      "recommended_roles": [
+        "line_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "soft_edge_only_rendering",
+        "line_free_airbrushed_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M09",
       "name_zh": "噴漆",
       "name_en": "Spray Paint",
       "family": "sprayed_color",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M09__spray_paint.png",
       "source_sha256": "6c1802aebfbcb99715d15bc6a7aa769767fbd399ba0a58ab5866194b1a6a2bbf",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M09__spray_paint.png",
+        "thumbnail": "Media/thumbnails/M09.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "atomized_color",
+        "soft_masked_edges",
+        "overspray"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 3,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 3,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 2,
+        "digital_fit": 4
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "brushstroke_dominance",
+        "unbroken_flat_vector_fill"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M10",
       "name_zh": "噴槍",
       "name_en": "Airbrush",
       "family": "sprayed_color",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M10__airbrush.png",
       "source_sha256": "27313423836cc7814dc96826fcc56665d585a30f4ef89ef8b399081e1b3e51ce",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M10__airbrush.png",
+        "thumbnail": "Media/thumbnails/M10.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "atomized_color",
+        "soft_masked_edges",
+        "overspray"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 3,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 3,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 2,
+        "digital_fit": 4
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "brushstroke_dominance",
+        "unbroken_flat_vector_fill"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M11",
       "name_zh": "蠟染",
       "name_en": "Batik",
       "family": "craft_surface",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M11__batik.png",
       "source_sha256": "39999d01416f507767520e60c6d644a359898da3c0799de1bac4d6d7d286a6aa",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M11__batik.png",
+        "thumbnail": "Media/thumbnails/M11.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "material_surface",
+        "handmade_irregularity",
+        "layered_construction"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 3,
+        "medical_label_legibility": 3,
+        "portrait_fit": 3,
+        "anatomy_fit": 3,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "texture_accent",
+        "base_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "materialless_flat_rendering",
+        "perfectly uniform repetition"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M12",
       "name_zh": "琺瑯彩",
       "name_en": "Enamel",
       "family": "craft_surface",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M12__enamel.png",
       "source_sha256": "8757838c4bc2479e8683d06cf6c6388b75d789d7eac3be65cc6bebc6d61da94d",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M12__enamel.png",
+        "thumbnail": "Media/thumbnails/M12.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "material_surface",
+        "handmade_irregularity",
+        "layered_construction"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 3,
+        "medical_label_legibility": 3,
+        "portrait_fit": 3,
+        "anatomy_fit": 3,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "texture_accent",
+        "base_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "materialless_flat_rendering",
+        "perfectly uniform repetition"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M13",
       "name_zh": "濕壁畫",
       "name_en": "Buon Fresco",
       "family": "wall_surface",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M13__buon_fresco.png",
       "source_sha256": "bb0a1412855cf353e72f808f9dfe20e3934958ff88d7c6c6236be1418ce74d12",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M13__buon_fresco.png",
+        "thumbnail": "Media/thumbnails/M13.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "mineral_ground",
+        "matte_pigment",
+        "aged_wall_texture"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 3,
+        "medical_label_legibility": 3,
+        "portrait_fit": 4,
+        "anatomy_fit": 3,
+        "scene_fit": 5,
+        "public_health_fit": 3,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "glossy_plastic_finish",
+        "neon_digital_glow"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M14",
       "name_zh": "生漆／漆畫",
       "name_en": "Urushi",
       "family": "craft_surface",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M14__urushi.png",
       "source_sha256": "b7d3df7e7767c222976477afa345b1ab2d746d31930299432933fee5f823e0e9",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M14__urushi.png",
+        "thumbnail": "Media/thumbnails/M14.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "material_surface",
+        "handmade_irregularity",
+        "layered_construction"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 3,
+        "medical_label_legibility": 3,
+        "portrait_fit": 3,
+        "anatomy_fit": 3,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "texture_accent",
+        "base_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "materialless_flat_rendering",
+        "perfectly uniform repetition"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M15",
       "name_zh": "粉筆",
       "name_en": "Chalk",
       "family": "dry_drawing",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M15__chalk.png",
       "source_sha256": "062e84eee46220eacf51034d1dff8db2460a765c1946ff1537fe3e6780f88461",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M15__chalk.png",
+        "thumbnail": "Media/thumbnails/M15.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "tooth_grain",
+        "layered_strokes",
+        "pressure_variation"
+      ],
+      "capabilities": {
+        "opacity": 3,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 3,
+        "archive_fit": 4,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "glass_smooth_fill",
+        "perfectly uniform gradients"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M16",
       "name_zh": "炭筆",
       "name_en": "Charcoal",
       "family": "dry_drawing",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M16__charcoal.png",
       "source_sha256": "21828efe9d4bb611e9eaa172391f34c659988b2d63786005e0281805a81541c5",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M16__charcoal.png",
+        "thumbnail": "Media/thumbnails/M16.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "tooth_grain",
+        "layered_strokes",
+        "pressure_variation"
+      ],
+      "capabilities": {
+        "opacity": 3,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 3,
+        "archive_fit": 4,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "glass_smooth_fill",
+        "perfectly uniform gradients"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M17",
       "name_zh": "色鉛筆",
       "name_en": "Colored Pencil",
       "family": "dry_drawing",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M17__colored_pencil.png",
       "source_sha256": "fa345fb7de8fdf4426f15c9190cc91d091af23593eba2e05827ee67d84b823f9",
-      "profile_status": "pilot"
+      "profile_status": "pilot",
+      "assets": {
+        "card": "Media/cards/M17__colored_pencil.png",
+        "thumbnail": "Media/thumbnails/M17.jpg",
+        "reference_panels": [
+          "Media/panels/M17/02__fingerprint.png",
+          "Media/panels/M17/05__portrait.png",
+          "Media/panels/M17/06__anatomy.png",
+          "Media/panels/M17/09__micro-technique.png"
+        ]
+      },
+      "mechanisms": [
+        "tooth_grain",
+        "layered_strokes",
+        "pressure_variation"
+      ],
+      "capabilities": {
+        "opacity": 3,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 3,
+        "archive_fit": 2,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [
+        {
+          "id": "M01",
+          "role": "base_medium",
+          "automatic_pairing_allowed": true
+        },
+        {
+          "id": "M02",
+          "role": "base_medium",
+          "automatic_pairing_allowed": true
+        },
+        {
+          "id": "M39",
+          "role": "line_medium",
+          "automatic_pairing_allowed": true
+        }
+      ],
+      "avoid": [
+        "glass_smooth_fill",
+        "perfectly uniform gradients"
+      ],
+      "resolver": {
+        "automatic_use_allowed": true,
+        "manual_review_required": false,
+        "assessment_basis": "pilot_visual_estimate",
+        "confidence": 0.72
+      }
     },
     {
       "id": "M18",
       "name_zh": "蠟筆",
       "name_en": "Wax Crayon",
       "family": "dry_drawing",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M18__wax_crayon.png",
       "source_sha256": "06fa454b795f0520c7a20cf204cf74e3caa23e11632a16d4507c52317e86d12e",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M18__wax_crayon.png",
+        "thumbnail": "Media/thumbnails/M18.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "tooth_grain",
+        "layered_strokes",
+        "pressure_variation"
+      ],
+      "capabilities": {
+        "opacity": 3,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 3,
+        "archive_fit": 4,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "glass_smooth_fill",
+        "perfectly uniform gradients"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M19",
       "name_zh": "軟性粉彩",
       "name_en": "Soft Pastel",
       "family": "dry_drawing",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M19__soft_pastel.png",
       "source_sha256": "12d222aa49a43c0cedc68bd2ecfe3ec4380ef59ffc89eed486c15604d5a75658",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M19__soft_pastel.png",
+        "thumbnail": "Media/thumbnails/M19.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "tooth_grain",
+        "layered_strokes",
+        "pressure_variation"
+      ],
+      "capabilities": {
+        "opacity": 3,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 3,
+        "archive_fit": 4,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "glass_smooth_fill",
+        "perfectly uniform gradients"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M20",
       "name_zh": "油性粉彩",
       "name_en": "Oil Pastel",
       "family": "dry_drawing",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M20__oil_pastel.png",
       "source_sha256": "2877cdc58a36533eeaac161f7a42fbf554d59357ae7312cf6ebfba64c1e20edb",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M20__oil_pastel.png",
+        "thumbnail": "Media/thumbnails/M20.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "tooth_grain",
+        "layered_strokes",
+        "pressure_variation"
+      ],
+      "capabilities": {
+        "opacity": 3,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 3,
+        "archive_fit": 4,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "glass_smooth_fill",
+        "perfectly uniform gradients"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M21",
       "name_zh": "粉彩筆",
       "name_en": "Pastel Pencil",
       "family": "dry_drawing",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M21__pastel_pencil.png",
       "source_sha256": "58c2c47197c90a123cbb91619ae1e8a7ada1180a91fb87b91e26dc9f84650eb4",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M21__pastel_pencil.png",
+        "thumbnail": "Media/thumbnails/M21.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "tooth_grain",
+        "layered_strokes",
+        "pressure_variation"
+      ],
+      "capabilities": {
+        "opacity": 3,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 3,
+        "archive_fit": 4,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "glass_smooth_fill",
+        "perfectly uniform gradients"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M22",
       "name_zh": "石墨鉛筆",
       "name_en": "Graphite",
       "family": "dry_drawing",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M22__graphite.png",
       "source_sha256": "ceaf5481799b2c4291cc57d178e646bcb993640585d7a78ebb4629950a8119be",
-      "profile_status": "pilot"
+      "profile_status": "pilot",
+      "assets": {
+        "card": "Media/cards/M22__graphite.png",
+        "thumbnail": "Media/thumbnails/M22.jpg",
+        "reference_panels": [
+          "Media/panels/M22/02__fingerprint.png",
+          "Media/panels/M22/05__portrait.png",
+          "Media/panels/M22/06__anatomy.png",
+          "Media/panels/M22/09__micro-technique.png"
+        ]
+      },
+      "mechanisms": [
+        "tooth_grain",
+        "layered_strokes",
+        "pressure_variation"
+      ],
+      "capabilities": {
+        "opacity": 2,
+        "line_precision": 5,
+        "medical_label_legibility": 4,
+        "portrait_fit": 4,
+        "anatomy_fit": 5,
+        "scene_fit": 3,
+        "public_health_fit": 2,
+        "archive_fit": 4,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [
+        {
+          "id": "M01",
+          "role": "base_medium",
+          "automatic_pairing_allowed": true
+        },
+        {
+          "id": "M19",
+          "role": "base_medium",
+          "automatic_pairing_allowed": false
+        }
+      ],
+      "avoid": [
+        "glass_smooth_fill",
+        "perfectly uniform gradients"
+      ],
+      "resolver": {
+        "automatic_use_allowed": true,
+        "manual_review_required": false,
+        "assessment_basis": "pilot_visual_estimate",
+        "confidence": 0.72
+      }
     },
     {
       "id": "M23",
       "name_zh": "康特筆",
       "name_en": "Conte",
       "family": "dry_drawing",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M23__conte.png",
       "source_sha256": "9a1ce686a083ff4cfc2cf8196534f24692bc71681cc28568b82c9fcfd34637eb",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M23__conte.png",
+        "thumbnail": "Media/thumbnails/M23.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "tooth_grain",
+        "layered_strokes",
+        "pressure_variation"
+      ],
+      "capabilities": {
+        "opacity": 3,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 3,
+        "archive_fit": 4,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "glass_smooth_fill",
+        "perfectly uniform gradients"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M24",
       "name_zh": "銀尖筆",
       "name_en": "Silverpoint",
       "family": "metalpoint",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M24__silverpoint.png",
       "source_sha256": "eb6383c0e3b651258a25be7949cb2003cde12d9e962925d8dd3687f955e54088",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M24__silverpoint.png",
+        "thumbnail": "Media/thumbnails/M24.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "fine_metallic_line",
+        "toned_ground",
+        "delicate_crosshatching"
+      ],
+      "capabilities": {
+        "opacity": 2,
+        "line_precision": 5,
+        "medical_label_legibility": 4,
+        "portrait_fit": 4,
+        "anatomy_fit": 5,
+        "scene_fit": 3,
+        "public_health_fit": 2,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "line_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "heavy_opaque_fill",
+        "broad saturated brushwork"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M25",
       "name_zh": "蠟畫",
       "name_en": "Encaustic",
       "family": "wax_medium",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M25__encaustic.png",
       "source_sha256": "a2ed408ff179a5c26bc6613e5a3e14cb6ab0acee9eebaa6f95641847fdf116fb",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M25__encaustic.png",
+        "thumbnail": "Media/thumbnails/M25.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "wax_layering",
+        "translucent_depth",
+        "scraped_surface"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 3,
+        "medical_label_legibility": 3,
+        "portrait_fit": 4,
+        "anatomy_fit": 3,
+        "scene_fit": 4,
+        "public_health_fit": 3,
+        "archive_fit": 4,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "flat_unlayered_fill",
+        "sterile_vector_edges"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M26",
       "name_zh": "木刻",
       "name_en": "Woodcut",
       "family": "printmaking",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M26__woodcut.png",
       "source_sha256": "1c2159ff1f1d871f727735c97dfdbde5983a03e071706dbda52a3a0333b33894",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M26__woodcut.png",
+        "thumbnail": "Media/thumbnails/M26.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "ink_transfer",
+        "plate_or_block_texture",
+        "limited_color_separation"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "seamless_photorealistic_gradient",
+        "textureless_vector_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M27",
       "name_zh": "絲網印刷",
       "name_en": "Screen Printing",
       "family": "printmaking",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M27__screen_printing.png",
       "source_sha256": "23ee3aa1c0f2272742c1a87a944b2954bb51b10d724bafc1ca65f633f0fe7375",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M27__screen_printing.png",
+        "thumbnail": "Media/thumbnails/M27.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "ink_transfer",
+        "plate_or_block_texture",
+        "limited_color_separation"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "seamless_photorealistic_gradient",
+        "textureless_vector_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M28",
       "name_zh": "蝕刻",
       "name_en": "Etching",
       "family": "printmaking",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M28__etching.png",
       "source_sha256": "13a0e42c74ed01e363ceeb649c5e01eb371507e8d62cb2067d38c2b6c41cfa62",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M28__etching.png",
+        "thumbnail": "Media/thumbnails/M28.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "ink_transfer",
+        "plate_or_block_texture",
+        "limited_color_separation"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "seamless_photorealistic_gradient",
+        "textureless_vector_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M29",
       "name_zh": "石版畫",
       "name_en": "Lithography",
       "family": "printmaking",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M29__lithography.png",
       "source_sha256": "97b8ece3b1e280dd922c7a60bc2f061e5fb06e34814eb04cc9a941c7894efb5b",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M29__lithography.png",
+        "thumbnail": "Media/thumbnails/M29.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "ink_transfer",
+        "plate_or_block_texture",
+        "limited_color_separation"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "seamless_photorealistic_gradient",
+        "textureless_vector_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M30",
       "name_zh": "單刷版畫",
       "name_en": "Monotype",
       "family": "printmaking",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M30__monotype.png",
       "source_sha256": "1e47e46e1db6d7808c23418f05150bcf4ca96951f964699c6d2c84656f043b2b",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M30__monotype.png",
+        "thumbnail": "Media/thumbnails/M30.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "ink_transfer",
+        "plate_or_block_texture",
+        "limited_color_separation"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "seamless_photorealistic_gradient",
+        "textureless_vector_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M31",
       "name_zh": "拼貼",
       "name_en": "Collage",
       "family": "assembled_surface",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M31__collage.png",
       "source_sha256": "172e83a2d72641539198d888b70e55e5e45729027df41bf95d2eee0489778680",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M31__collage.png",
+        "thumbnail": "Media/thumbnails/M31.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "assembled_fragments",
+        "layered_edges",
+        "material_contrast"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 2,
+        "medical_label_legibility": 3,
+        "portrait_fit": 4,
+        "anatomy_fit": 2,
+        "scene_fit": 5,
+        "public_health_fit": 4,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "texture_accent",
+        "base_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "single_surface_uniformity",
+        "seamless_airbrush_finish"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M32",
       "name_zh": "金箔貼金",
       "name_en": "Gilding",
       "family": "craft_surface",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M32__gilding.png",
       "source_sha256": "4c07feb81ad85a62b1daa5a89493e11d022ac057652ccd457602d27daa29c221",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M32__gilding.png",
+        "thumbnail": "Media/thumbnails/M32.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "material_surface",
+        "handmade_irregularity",
+        "layered_construction"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 3,
+        "medical_label_legibility": 3,
+        "portrait_fit": 3,
+        "anatomy_fit": 3,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "texture_accent",
+        "base_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "materialless_flat_rendering",
+        "perfectly uniform repetition"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M33",
       "name_zh": "馬賽克",
       "name_en": "Mosaic",
       "family": "assembled_surface",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M33__mosaic.png",
       "source_sha256": "f13c85f1790b30e923e64ded3f3bb7ab85ba9dba5dcdadfa93c1d014cfe79f5d",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M33__mosaic.png",
+        "thumbnail": "Media/thumbnails/M33.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "assembled_fragments",
+        "layered_edges",
+        "material_contrast"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 2,
+        "medical_label_legibility": 3,
+        "portrait_fit": 4,
+        "anatomy_fit": 2,
+        "scene_fit": 5,
+        "public_health_fit": 4,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "texture_accent",
+        "base_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "single_surface_uniformity",
+        "seamless_airbrush_finish"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M34",
       "name_zh": "沙畫",
       "name_en": "Sand Painting",
       "family": "granular_surface",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M34__sand_painting.png",
       "source_sha256": "d552ab8d9f9391fd1fecd75bda6e73eac41599fafb2da3d9e5bc9303513bdbd6",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M34__sand_painting.png",
+        "thumbnail": "Media/thumbnails/M34.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "granular_deposition",
+        "ritual_patterning",
+        "tactile_surface"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 2,
+        "medical_label_legibility": 2,
+        "portrait_fit": 3,
+        "anatomy_fit": 2,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "smooth_glossy_fill",
+        "pixel_perfect_micro_edges"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M35",
       "name_zh": "刮畫",
       "name_en": "Scratchboard",
       "family": "drawing_surface",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M35__scratchboard.png",
       "source_sha256": "70cf5c7a7f1ee4e5aeeba9533756d33986b46b17b016509fe46149cb186d64d3",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M35__scratchboard.png",
+        "thumbnail": "Media/thumbnails/M35.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "subtractive_highlight",
+        "high_contrast_line",
+        "dark_ground"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 5,
+        "medical_label_legibility": 5,
+        "portrait_fit": 3,
+        "anatomy_fit": 5,
+        "scene_fit": 3,
+        "public_health_fit": 5,
+        "archive_fit": 4,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "line_medium",
+        "base_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "low_contrast_tonal_mush",
+        "transparent_wash_dominance"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M36",
       "name_zh": "麥克筆",
       "name_en": "Marker",
       "family": "drawing_ink",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M36__marker.png",
       "source_sha256": "9125bfeb360117b22c438f33eadb80c16f243c54c36c1fa04deee509ed6612f8",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M36__marker.png",
+        "thumbnail": "Media/thumbnails/M36.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "controlled_line_weight",
+        "hatching",
+        "ink_edge_definition"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 5,
+        "medical_label_legibility": 5,
+        "portrait_fit": 3,
+        "anatomy_fit": 5,
+        "scene_fit": 3,
+        "public_health_fit": 5,
+        "archive_fit": 4,
+        "digital_fit": 4
+      },
+      "recommended_roles": [
+        "line_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "soft_edge_only_rendering",
+        "line_free_airbrushed_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M37",
       "name_zh": "毛筆／書法",
       "name_en": "Brush Ink",
       "family": "drawing_ink",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M37__brush_ink.png",
       "source_sha256": "ccedaeb324129ecce27c6595015931070890de2ffc39ab8ae3817c575bfa11d7",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M37__brush_ink.png",
+        "thumbnail": "Media/thumbnails/M37.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "controlled_line_weight",
+        "hatching",
+        "ink_edge_definition"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 5,
+        "medical_label_legibility": 5,
+        "portrait_fit": 3,
+        "anatomy_fit": 5,
+        "scene_fit": 3,
+        "public_health_fit": 5,
+        "archive_fit": 4,
+        "digital_fit": 4
+      },
+      "recommended_roles": [
+        "line_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "soft_edge_only_rendering",
+        "line_free_airbrushed_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M38",
       "name_zh": "原子筆",
       "name_en": "Ballpoint Pen",
       "family": "drawing_ink",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M38__ballpoint_pen.png",
       "source_sha256": "1ddce6bb7d70ee5ba1b27cc0bbe1df80ece9aedf7258f99b28edadc33aacc803",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M38__ballpoint_pen.png",
+        "thumbnail": "Media/thumbnails/M38.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "controlled_line_weight",
+        "hatching",
+        "ink_edge_definition"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 5,
+        "medical_label_legibility": 5,
+        "portrait_fit": 3,
+        "anatomy_fit": 5,
+        "scene_fit": 3,
+        "public_health_fit": 5,
+        "archive_fit": 4,
+        "digital_fit": 4
+      },
+      "recommended_roles": [
+        "line_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "soft_edge_only_rendering",
+        "line_free_airbrushed_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M39",
       "name_zh": "針管筆",
       "name_en": "Technical Pen",
       "family": "drawing_ink",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M39__technical_pen.png",
       "source_sha256": "5580ac7200ab5452ee5dad2ee5b690446b4451994c17928ad643b032ce3d359f",
-      "profile_status": "pilot"
+      "profile_status": "pilot",
+      "assets": {
+        "card": "Media/cards/M39__technical_pen.png",
+        "thumbnail": "Media/thumbnails/M39.jpg",
+        "reference_panels": [
+          "Media/panels/M39/02__fingerprint.png",
+          "Media/panels/M39/05__portrait.png",
+          "Media/panels/M39/06__anatomy.png",
+          "Media/panels/M39/09__micro-technique.png"
+        ]
+      },
+      "mechanisms": [
+        "controlled_line_weight",
+        "hatching",
+        "ink_edge_definition"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 5,
+        "medical_label_legibility": 5,
+        "portrait_fit": 3,
+        "anatomy_fit": 5,
+        "scene_fit": 3,
+        "public_health_fit": 5,
+        "archive_fit": 3,
+        "digital_fit": 4
+      },
+      "recommended_roles": [
+        "line_medium"
+      ],
+      "compatible_partners": [
+        {
+          "id": "M01",
+          "role": "base_medium",
+          "automatic_pairing_allowed": true
+        },
+        {
+          "id": "M43",
+          "role": "base_medium",
+          "automatic_pairing_allowed": true
+        },
+        {
+          "id": "M69",
+          "role": "base_medium",
+          "automatic_pairing_allowed": true
+        }
+      ],
+      "avoid": [
+        "soft_edge_only_rendering",
+        "line_free_airbrushed_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": true,
+        "manual_review_required": false,
+        "assessment_basis": "pilot_visual_estimate",
+        "confidence": 0.72
+      }
     },
     {
       "id": "M40",
       "name_zh": "印度墨",
       "name_en": "India Ink",
       "family": "drawing_ink",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M40__india_ink.png",
       "source_sha256": "22aec740be787e47f2cabce5b6d11920bb191b2f312e92040681a08ae105bc4d",
-      "profile_status": "pilot"
+      "profile_status": "pilot",
+      "assets": {
+        "card": "Media/cards/M40__india_ink.png",
+        "thumbnail": "Media/thumbnails/M40.jpg",
+        "reference_panels": [
+          "Media/panels/M40/02__fingerprint.png",
+          "Media/panels/M40/05__portrait.png",
+          "Media/panels/M40/06__anatomy.png",
+          "Media/panels/M40/09__micro-technique.png"
+        ]
+      },
+      "mechanisms": [
+        "controlled_line_weight",
+        "hatching",
+        "ink_edge_definition"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 5,
+        "medical_label_legibility": 5,
+        "portrait_fit": 4,
+        "anatomy_fit": 5,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 4,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "line_medium"
+      ],
+      "compatible_partners": [
+        {
+          "id": "M01",
+          "role": "base_medium",
+          "automatic_pairing_allowed": true
+        },
+        {
+          "id": "M43",
+          "role": "base_medium",
+          "automatic_pairing_allowed": true
+        }
+      ],
+      "avoid": [
+        "soft_edge_only_rendering",
+        "line_free_airbrushed_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": true,
+        "manual_review_required": false,
+        "assessment_basis": "pilot_visual_estimate",
+        "confidence": 0.72
+      }
     },
     {
       "id": "M41",
       "name_zh": "壓克力墨水",
       "name_en": "Acrylic Ink",
       "family": "drawing_ink",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M41__acrylic_ink.png",
       "source_sha256": "42b0f80bf8da01c79f70d7bb00d81e03c2c5e62823c303f75d0afd344f7a3c29",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M41__acrylic_ink.png",
+        "thumbnail": "Media/thumbnails/M41.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "controlled_line_weight",
+        "hatching",
+        "ink_edge_definition"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 5,
+        "medical_label_legibility": 5,
+        "portrait_fit": 3,
+        "anatomy_fit": 5,
+        "scene_fit": 3,
+        "public_health_fit": 5,
+        "archive_fit": 4,
+        "digital_fit": 4
+      },
+      "recommended_roles": [
+        "line_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "soft_edge_only_rendering",
+        "line_free_airbrushed_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M42",
       "name_zh": "酒精墨水",
       "name_en": "Alcohol Ink",
       "family": "fluid_ink",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M42__alcohol_ink.png",
       "source_sha256": "a00f78184d645c4402abf0ba1ed6e98f53492ceccb34916d549bbd115bb40213",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M42__alcohol_ink.png",
+        "thumbnail": "Media/thumbnails/M42.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "fluid_bloom",
+        "transparent_overlap",
+        "edge_pooling"
+      ],
+      "capabilities": {
+        "opacity": 3,
+        "line_precision": 2,
+        "medical_label_legibility": 2,
+        "portrait_fit": 4,
+        "anatomy_fit": 2,
+        "scene_fit": 5,
+        "public_health_fit": 3,
+        "archive_fit": 2,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "mechanically_uniform_fill",
+        "perfectly_repeatable_edges"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M43",
       "name_zh": "酪蛋白顏料",
       "name_en": "Casein Paint",
       "family": "wet_paint",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M43__casein_paint.png",
       "source_sha256": "032beca2962ee1c7ab8e9ce5730f73727503f6d0de54eb3f00f20b8d70d95097",
-      "profile_status": "pilot"
+      "profile_status": "pilot",
+      "assets": {
+        "card": "Media/cards/M43__casein_paint.png",
+        "thumbnail": "Media/thumbnails/M43.jpg",
+        "reference_panels": [
+          "Media/panels/M43/02__fingerprint.png",
+          "Media/panels/M43/05__portrait.png",
+          "Media/panels/M43/06__anatomy.png",
+          "Media/panels/M43/09__micro-technique.png"
+        ]
+      },
+      "mechanisms": [
+        "layered_color",
+        "visible_brushwork",
+        "organic_edges"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 3,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 4,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "base_medium"
+      ],
+      "compatible_partners": [
+        {
+          "id": "M39",
+          "role": "line_medium",
+          "automatic_pairing_allowed": true
+        },
+        {
+          "id": "M40",
+          "role": "line_medium",
+          "automatic_pairing_allowed": true
+        }
+      ],
+      "avoid": [
+        "uniform_digital_gradient",
+        "plastic_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": true,
+        "manual_review_required": false,
+        "assessment_basis": "pilot_visual_estimate",
+        "confidence": 0.72
+      }
     },
     {
       "id": "M44",
       "name_zh": "膠彩／動物膠彩",
       "name_en": "Distemper",
       "family": "wet_paint",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M44__distemper.png",
       "source_sha256": "ca4e6efd802cebf6f83cd320474165c59e8d00937393d0bcecb7b11b835ae164",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M44__distemper.png",
+        "thumbnail": "Media/thumbnails/M44.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "layered_color",
+        "visible_brushwork",
+        "organic_edges"
+      ],
+      "capabilities": {
+        "opacity": 3,
+        "line_precision": 2,
+        "medical_label_legibility": 3,
+        "portrait_fit": 5,
+        "anatomy_fit": 3,
+        "scene_fit": 5,
+        "public_health_fit": 3,
+        "archive_fit": 2,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "base_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "uniform_digital_gradient",
+        "plastic_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M45",
       "name_zh": "油氈版畫",
       "name_en": "Linocut",
       "family": "printmaking",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M45__linocut.png",
       "source_sha256": "92a4b9fae4ade073fe63380dca96167185da3775604d7b9f34d24dc9a350a829",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M45__linocut.png",
+        "thumbnail": "Media/thumbnails/M45.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "ink_transfer",
+        "plate_or_block_texture",
+        "limited_color_separation"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "seamless_photorealistic_gradient",
+        "textureless_vector_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M46",
       "name_zh": "乾刻",
       "name_en": "Drypoint",
       "family": "printmaking",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M46__drypoint.png",
       "source_sha256": "3f2075a881756bbd2e610606fb560cd579fe5f88444adf355f3d66b20cc67cea",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M46__drypoint.png",
+        "thumbnail": "Media/thumbnails/M46.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "ink_transfer",
+        "plate_or_block_texture",
+        "limited_color_separation"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "seamless_photorealistic_gradient",
+        "textureless_vector_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M47",
       "name_zh": "飛塵腐蝕",
       "name_en": "Aquatint",
       "family": "printmaking",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M47__aquatint.png",
       "source_sha256": "632eaa979ba599f9783b9ca595a1dbeb49163104e20a33c26ddf665f996e5fcc",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M47__aquatint.png",
+        "thumbnail": "Media/thumbnails/M47.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "ink_transfer",
+        "plate_or_block_texture",
+        "limited_color_separation"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "seamless_photorealistic_gradient",
+        "textureless_vector_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M48",
       "name_zh": "美柔汀",
       "name_en": "Mezzotint",
       "family": "printmaking",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M48__mezzotint.png",
       "source_sha256": "1dcfe9404103e229fe2488145a2491394379cb565ed09a9984248ab6a05be785",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M48__mezzotint.png",
+        "thumbnail": "Media/thumbnails/M48.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "ink_transfer",
+        "plate_or_block_texture",
+        "limited_color_separation"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "seamless_photorealistic_gradient",
+        "textureless_vector_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M49",
       "name_zh": "拼貼版畫",
       "name_en": "Collagraph",
       "family": "printmaking",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M49__collagraph.png",
       "source_sha256": "3366d86d4b05ba6c732c4be54ece1967bcc27ec33695ef5b06c98efd19e7fd2a",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M49__collagraph.png",
+        "thumbnail": "Media/thumbnails/M49.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "ink_transfer",
+        "plate_or_block_texture",
+        "limited_color_separation"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "seamless_photorealistic_gradient",
+        "textureless_vector_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M50",
       "name_zh": "孔版印刷",
       "name_en": "Risograph",
       "family": "printmaking",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M50__risograph.png",
       "source_sha256": "588fdc3915a38ed4c5f1d6bebdbf0cd2d6e5812a894ef44e59af609307c25dd5",
-      "profile_status": "pilot"
+      "profile_status": "pilot",
+      "assets": {
+        "card": "Media/cards/M50__risograph.png",
+        "thumbnail": "Media/thumbnails/M50.jpg",
+        "reference_panels": [
+          "Media/panels/M50/02__fingerprint.png",
+          "Media/panels/M50/05__portrait.png",
+          "Media/panels/M50/06__anatomy.png",
+          "Media/panels/M50/09__micro-technique.png"
+        ]
+      },
+      "mechanisms": [
+        "ink_transfer",
+        "plate_or_block_texture",
+        "limited_color_separation"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 4,
+        "medical_label_legibility": 5,
+        "portrait_fit": 3,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 3,
+        "digital_fit": 4
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [
+        {
+          "id": "M39",
+          "role": "line_medium",
+          "automatic_pairing_allowed": true
+        },
+        {
+          "id": "M74",
+          "role": "base_medium",
+          "automatic_pairing_allowed": true
+        }
+      ],
+      "avoid": [
+        "seamless_photorealistic_gradient",
+        "textureless_vector_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": true,
+        "manual_review_required": false,
+        "assessment_basis": "pilot_visual_estimate",
+        "confidence": 0.72
+      }
     },
     {
       "id": "M51",
       "name_zh": "藍曬",
       "name_en": "Cyanotype",
       "family": "photographic",
+      "medium_kind": "photographic_process",
       "classification_level": "visual_medium",
       "card": "cards/M51__cyanotype.png",
       "source_sha256": "a8322b2124ca0dd8e8aea57df57dbdc5c351caa7988ca29b8af8432d706f2185",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M51__cyanotype.png",
+        "thumbnail": "Media/thumbnails/M51.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "light_sensitive_process",
+        "tonal_print_surface",
+        "chemical_or_contact_artifact"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 5,
+        "public_health_fit": 3,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "output_finish"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "cartoon_outline_dominance",
+        "synthetic_neon_palette"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M52",
       "name_zh": "剪紙",
       "name_en": "Paper Cut",
       "family": "craft_surface",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M52__paper_cut.png",
       "source_sha256": "79e3cf7bbf5f3bdb79a1eb7741b0785701f9f89ac0326c252a40ee6098c5b324",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M52__paper_cut.png",
+        "thumbnail": "Media/thumbnails/M52.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "material_surface",
+        "handmade_irregularity",
+        "layered_construction"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 3,
+        "medical_label_legibility": 3,
+        "portrait_fit": 3,
+        "anatomy_fit": 3,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "texture_accent",
+        "base_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "materialless_flat_rendering",
+        "perfectly uniform repetition"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M53",
       "name_zh": "刺繡",
       "name_en": "Embroidery",
       "family": "textile",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M53__embroidery.png",
       "source_sha256": "adf0a741aaef105bf09c3e7a260f3de946aa4285f6a8fdc7a38cf167e9e2b424",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M53__embroidery.png",
+        "thumbnail": "Media/thumbnails/M53.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "thread_direction",
+        "stitched_contour",
+        "fabric_ground"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 3,
+        "medical_label_legibility": 3,
+        "portrait_fit": 4,
+        "anatomy_fit": 3,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "texture_accent",
+        "line_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "threadless_flat_fill",
+        "perfectly smooth gradients"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M54",
       "name_zh": "彩繪玻璃",
       "name_en": "Stained Glass",
       "family": "craft_surface",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M54__stained_glass.png",
       "source_sha256": "b564f38a3349ffff568a8100f2826d57d4d95ef8eff3bbaeb60a91e74c4fcd45",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M54__stained_glass.png",
+        "thumbnail": "Media/thumbnails/M54.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "material_surface",
+        "handmade_irregularity",
+        "layered_construction"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 3,
+        "medical_label_legibility": 3,
+        "portrait_fit": 3,
+        "anatomy_fit": 3,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "texture_accent",
+        "base_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "materialless_flat_rendering",
+        "perfectly uniform repetition"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M55",
       "name_zh": "墨流／浮水染",
       "name_en": "Suminagashi",
       "family": "marbling",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M55__suminagashi.png",
       "source_sha256": "415d5559fe8b4594acf8a1a075c08a13a25e034866477ce035562813f36263f4",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M55__suminagashi.png",
+        "thumbnail": "Media/thumbnails/M55.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "floating_pigment",
+        "fluid_combing",
+        "nonrepeatable_veining"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 1,
+        "medical_label_legibility": 2,
+        "portrait_fit": 3,
+        "anatomy_fit": 1,
+        "scene_fit": 5,
+        "public_health_fit": 3,
+        "archive_fit": 4,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "texture_accent",
+        "base_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "precise_label_linework",
+        "mechanically repeated pattern"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M56",
       "name_zh": "土耳其浮水畫",
       "name_en": "Ebru",
       "family": "marbling",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M56__ebru.png",
       "source_sha256": "e75d36783b5ed6b7e296af51dca6bbf8cf1f9db0cb33108dd7c5c7bd80a5f549",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M56__ebru.png",
+        "thumbnail": "Media/thumbnails/M56.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "floating_pigment",
+        "fluid_combing",
+        "nonrepeatable_veining"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 1,
+        "medical_label_legibility": 2,
+        "portrait_fit": 3,
+        "anatomy_fit": 1,
+        "scene_fit": 5,
+        "public_health_fit": 3,
+        "archive_fit": 4,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "texture_accent",
+        "base_medium"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "precise_label_linework",
+        "mechanically repeated pattern"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M57",
       "name_zh": "澱粉糊染紙",
       "name_en": "Paste Paper",
       "family": "decorated_paper",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M57__paste_paper.png",
       "source_sha256": "bcdf4c9ca3a54c580c96d60f84e90bf0de6088b37277eedb3c675f22b73494b6",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M57__paste_paper.png",
+        "thumbnail": "Media/thumbnails/M57.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "handmade_paper_pattern",
+        "paste_drag",
+        "surface_repeat"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 2,
+        "medical_label_legibility": 3,
+        "portrait_fit": 3,
+        "anatomy_fit": 2,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "texture_accent",
+        "output_finish"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "featureless_white_ground",
+        "photorealistic_depth"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M58",
       "name_zh": "拓印",
       "name_en": "Frottage",
       "family": "transfer_texture",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M58__frottage.png",
       "source_sha256": "68ef0149d6908d4be59eec7e83aee78e03feb799a5182f330f916c346f954ea8",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M58__frottage.png",
+        "thumbnail": "Media/thumbnails/M58.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "contact_transfer",
+        "found_surface_imprint",
+        "organic_irregularity"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 2,
+        "medical_label_legibility": 3,
+        "portrait_fit": 3,
+        "anatomy_fit": 2,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "clean_vector_uniformity",
+        "untextured fill"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M59",
       "name_zh": "轉印畫",
       "name_en": "Decalcomania",
       "family": "transfer_texture",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M59__decalcomania.png",
       "source_sha256": "992248f855ddc74b1c73dc435cce5f7e33d931978a7cb16fa387052d594b1966",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M59__decalcomania.png",
+        "thumbnail": "Media/thumbnails/M59.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "contact_transfer",
+        "found_surface_imprint",
+        "organic_irregularity"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 2,
+        "medical_label_legibility": 3,
+        "portrait_fit": 3,
+        "anatomy_fit": 2,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "clean_vector_uniformity",
+        "untextured fill"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M60",
       "name_zh": "鏤空／模板畫",
       "name_en": "Stencil",
       "family": "printmaking",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M60__stencil.png",
       "source_sha256": "4d591d500087ea492f3668c91493ac02f401e5a115a8ecbc6e2d461b79af03b0",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M60__stencil.png",
+        "thumbnail": "Media/thumbnails/M60.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "ink_transfer",
+        "plate_or_block_texture",
+        "limited_color_separation"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "seamless_photorealistic_gradient",
+        "textureless_vector_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M61",
       "name_zh": "橡皮章",
       "name_en": "Rubber Stamp",
       "family": "printmaking",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M61__rubber_stamp.png",
       "source_sha256": "e2ed0e411c6e7edd9e5ae1086943d9aa4d04702b13ae9ffb01d2f9f74320d6d3",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M61__rubber_stamp.png",
+        "thumbnail": "Media/thumbnails/M61.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "ink_transfer",
+        "plate_or_block_texture",
+        "limited_color_separation"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "seamless_photorealistic_gradient",
+        "textureless_vector_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M62",
       "name_zh": "活版印刷",
       "name_en": "Letterpress",
       "family": "printmaking",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M62__letterpress.png",
       "source_sha256": "01d2d7deab904d31a4011e895fe0d4a9ef0a4e09d9956a12790ae365c70db947",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M62__letterpress.png",
+        "thumbnail": "Media/thumbnails/M62.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "ink_transfer",
+        "plate_or_block_texture",
+        "limited_color_separation"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "seamless_photorealistic_gradient",
+        "textureless_vector_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M63",
       "name_zh": "凝膠版畫",
       "name_en": "Gel Plate Printing",
       "family": "printmaking",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M63__gel_plate_printing.png",
       "source_sha256": "1b7d0e2f88a272a6ee8c1cf76e32730c0b3011e7ee448f89c3f3f35d3ef2d7a7",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M63__gel_plate_printing.png",
+        "thumbnail": "Media/thumbnails/M63.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "ink_transfer",
+        "plate_or_block_texture",
+        "limited_color_separation"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 3,
+        "anatomy_fit": 4,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "seamless_photorealistic_gradient",
+        "textureless_vector_surface"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M64",
       "name_zh": "魚拓",
       "name_en": "Gyotaku",
       "family": "transfer_texture",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M64__gyotaku.png",
       "source_sha256": "5198989192678e30a5109458032113e803072f5b565b0a3ced84d117944e875c",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M64__gyotaku.png",
+        "thumbnail": "Media/thumbnails/M64.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "contact_transfer",
+        "found_surface_imprint",
+        "organic_irregularity"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 2,
+        "medical_label_legibility": 3,
+        "portrait_fit": 3,
+        "anatomy_fit": 2,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "clean_vector_uniformity",
+        "untextured fill"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M65",
       "name_zh": "植物直接拓印",
       "name_en": "Nature Printing",
       "family": "transfer_texture",
+      "medium_kind": "physical_visual_medium",
       "classification_level": "visual_medium",
       "card": "cards/M65__nature_printing.png",
       "source_sha256": "80869750902ee64bed68afb62b00c8ca35cff3d79e56c0e6fb4917fc5fe5998d",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M65__nature_printing.png",
+        "thumbnail": "Media/thumbnails/M65.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "contact_transfer",
+        "found_surface_imprint",
+        "organic_irregularity"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 2,
+        "medical_label_legibility": 3,
+        "portrait_fit": 3,
+        "anatomy_fit": 2,
+        "scene_fit": 4,
+        "public_health_fit": 4,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "clean_vector_uniformity",
+        "untextured fill"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M66",
       "name_zh": "鹽紙印相",
       "name_en": "Salt Print",
       "family": "photographic",
+      "medium_kind": "photographic_process",
       "classification_level": "visual_medium",
       "card": "cards/M66__salt_print.png",
       "source_sha256": "f4f81631a34f90d9bcc23cf3cf309995fca1647730204b34e0e0974f42cec8ec",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M66__salt_print.png",
+        "thumbnail": "Media/thumbnails/M66.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "light_sensitive_process",
+        "tonal_print_surface",
+        "chemical_or_contact_artifact"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 5,
+        "public_health_fit": 3,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "output_finish"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "cartoon_outline_dominance",
+        "synthetic_neon_palette"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M67",
       "name_zh": "蛋白印相",
       "name_en": "Albumen Print",
       "family": "photographic",
+      "medium_kind": "photographic_process",
       "classification_level": "visual_medium",
       "card": "cards/M67__albumen_print.png",
       "source_sha256": "09bb0ad8ec92cc6b1a25ae613141af4baff98622becd1767fe38d4783985b66d",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M67__albumen_print.png",
+        "thumbnail": "Media/thumbnails/M67.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "light_sensitive_process",
+        "tonal_print_surface",
+        "chemical_or_contact_artifact"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 5,
+        "public_health_fit": 3,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "output_finish"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "cartoon_outline_dominance",
+        "synthetic_neon_palette"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M68",
       "name_zh": "梵戴克棕印相",
       "name_en": "Van Dyke Brown",
       "family": "photographic",
+      "medium_kind": "photographic_process",
       "classification_level": "visual_medium",
       "card": "cards/M68__van_dyke_brown.png",
       "source_sha256": "3d64078d5a82629286156cd8db6612f83ee8596d77ff7379887f840d9bd29dc9",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M68__van_dyke_brown.png",
+        "thumbnail": "Media/thumbnails/M68.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "light_sensitive_process",
+        "tonal_print_surface",
+        "chemical_or_contact_artifact"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 5,
+        "public_health_fit": 3,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "output_finish"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "cartoon_outline_dominance",
+        "synthetic_neon_palette"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M69",
       "name_zh": "鉑鈀印相",
       "name_en": "Platinum-Palladium Print",
       "family": "photographic",
+      "medium_kind": "photographic_process",
       "classification_level": "visual_medium",
       "card": "cards/M69__platinum_palladium_print.png",
       "source_sha256": "6705837a86ee1f622705cad85bad65f2154be0f17d861f77e513967b89e0bfdc",
-      "profile_status": "pilot"
+      "profile_status": "pilot",
+      "assets": {
+        "card": "Media/cards/M69__platinum_palladium_print.png",
+        "thumbnail": "Media/thumbnails/M69.jpg",
+        "reference_panels": [
+          "Media/panels/M69/02__fingerprint.png",
+          "Media/panels/M69/05__portrait.png",
+          "Media/panels/M69/06__anatomy.png",
+          "Media/panels/M69/09__micro-technique.png"
+        ]
+      },
+      "mechanisms": [
+        "light_sensitive_process",
+        "tonal_print_surface",
+        "chemical_or_contact_artifact"
+      ],
+      "capabilities": {
+        "opacity": 3,
+        "line_precision": 2,
+        "medical_label_legibility": 2,
+        "portrait_fit": 5,
+        "anatomy_fit": 2,
+        "scene_fit": 5,
+        "public_health_fit": 2,
+        "archive_fit": 5,
+        "digital_fit": 2
+      },
+      "recommended_roles": [
+        "base_medium",
+        "output_finish"
+      ],
+      "compatible_partners": [
+        {
+          "id": "M39",
+          "role": "line_medium",
+          "automatic_pairing_allowed": true
+        }
+      ],
+      "avoid": [
+        "cartoon_outline_dominance",
+        "synthetic_neon_palette"
+      ],
+      "resolver": {
+        "automatic_use_allowed": true,
+        "manual_review_required": false,
+        "assessment_basis": "pilot_visual_estimate",
+        "confidence": 0.72
+      }
     },
     {
       "id": "M70",
       "name_zh": "重鉻酸膠印",
       "name_en": "Gum Bichromate",
       "family": "photographic",
+      "medium_kind": "photographic_process",
       "classification_level": "visual_medium",
       "card": "cards/M70__gum_bichromate.png",
       "source_sha256": "b069e6aa1bbd708536ece70e277b7e7230a958fc4c5f973c5a2f1188a2bd7006",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M70__gum_bichromate.png",
+        "thumbnail": "Media/thumbnails/M70.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "light_sensitive_process",
+        "tonal_print_surface",
+        "chemical_or_contact_artifact"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 5,
+        "public_health_fit": 3,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "output_finish"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "cartoon_outline_dominance",
+        "synthetic_neon_palette"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M71",
       "name_zh": "照相凹版",
       "name_en": "Heliogravure",
       "family": "photographic",
+      "medium_kind": "photographic_process",
       "classification_level": "visual_medium",
       "card": "cards/M71__heliogravure.png",
       "source_sha256": "eb7a2e8e306a0e884afdcbf26a19e510ff490f70a525e6c58b75726f0650ea6d",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M71__heliogravure.png",
+        "thumbnail": "Media/thumbnails/M71.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "light_sensitive_process",
+        "tonal_print_surface",
+        "chemical_or_contact_artifact"
+      ],
+      "capabilities": {
+        "opacity": 4,
+        "line_precision": 4,
+        "medical_label_legibility": 4,
+        "portrait_fit": 5,
+        "anatomy_fit": 4,
+        "scene_fit": 5,
+        "public_health_fit": 3,
+        "archive_fit": 5,
+        "digital_fit": 3
+      },
+      "recommended_roles": [
+        "base_medium",
+        "output_finish"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "cartoon_outline_dominance",
+        "synthetic_neon_palette"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M72",
       "name_zh": "藝術微噴",
       "name_en": "Giclee",
       "family": "digital_output",
+      "medium_kind": "digital_output_method",
       "classification_level": "output_method",
       "card": "cards/M72__giclee.png",
       "source_sha256": "6911788334505617fa8a8da1042f783b5469bca99a234ff6c65db5a07ef1f47e",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M72__giclee.png",
+        "thumbnail": "Media/thumbnails/M72.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "high_resolution_inkjet_output",
+        "controlled_color_management",
+        "paper_dependent_finish"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 5,
+        "medical_label_legibility": 5,
+        "portrait_fit": 5,
+        "anatomy_fit": 5,
+        "scene_fit": 5,
+        "public_health_fit": 5,
+        "archive_fit": 3,
+        "digital_fit": 5
+      },
+      "recommended_roles": [
+        "output_finish"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "output_method_as_painting_style",
+        "invented_handmade_artifacts"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     },
     {
       "id": "M73",
       "name_zh": "點陣數位繪畫",
       "name_en": "Raster Painting",
       "family": "digital_creation",
+      "medium_kind": "digital_creation_method",
       "classification_level": "digital_method",
       "card": "cards/M73__raster_painting.png",
       "source_sha256": "e75af631005e48671ee22eb7b68484101ce5b6c910820127d3882fef28e4d10d",
-      "profile_status": "pilot"
+      "profile_status": "pilot",
+      "assets": {
+        "card": "Media/cards/M73__raster_painting.png",
+        "thumbnail": "Media/thumbnails/M73.jpg",
+        "reference_panels": [
+          "Media/panels/M73/02__fingerprint.png",
+          "Media/panels/M73/05__portrait.png",
+          "Media/panels/M73/06__anatomy.png",
+          "Media/panels/M73/09__micro-technique.png"
+        ]
+      },
+      "mechanisms": [
+        "digital_mark_construction",
+        "editable_layers",
+        "resolution_specific_edges"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 5,
+        "medical_label_legibility": 5,
+        "portrait_fit": 4,
+        "anatomy_fit": 5,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 2,
+        "digital_fit": 5
+      },
+      "recommended_roles": [
+        "base_medium",
+        "line_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [
+        {
+          "id": "M72",
+          "role": "output_finish",
+          "automatic_pairing_allowed": false
+        },
+        {
+          "id": "M74",
+          "role": "base_medium",
+          "automatic_pairing_allowed": true
+        }
+      ],
+      "avoid": [
+        "unrequested_physical_craft_artifacts",
+        "mixed_resolution_edges"
+      ],
+      "resolver": {
+        "automatic_use_allowed": true,
+        "manual_review_required": false,
+        "assessment_basis": "pilot_visual_estimate",
+        "confidence": 0.72
+      }
     },
     {
       "id": "M74",
       "name_zh": "向量插畫",
       "name_en": "Vector Illustration",
       "family": "digital_creation",
+      "medium_kind": "digital_creation_method",
       "classification_level": "digital_method",
       "card": "cards/M74__vector_illustration.png",
       "source_sha256": "bfbbf2830c16a73253190d799f7a33f6b070a4b82aec5f8b01698a10717615e0",
-      "profile_status": "pilot"
+      "profile_status": "pilot",
+      "assets": {
+        "card": "Media/cards/M74__vector_illustration.png",
+        "thumbnail": "Media/thumbnails/M74.jpg",
+        "reference_panels": [
+          "Media/panels/M74/02__fingerprint.png",
+          "Media/panels/M74/05__portrait.png",
+          "Media/panels/M74/06__anatomy.png",
+          "Media/panels/M74/09__micro-technique.png"
+        ]
+      },
+      "mechanisms": [
+        "digital_mark_construction",
+        "editable_layers",
+        "resolution_specific_edges"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 5,
+        "medical_label_legibility": 5,
+        "portrait_fit": 3,
+        "anatomy_fit": 5,
+        "scene_fit": 4,
+        "public_health_fit": 5,
+        "archive_fit": 1,
+        "digital_fit": 5
+      },
+      "recommended_roles": [
+        "base_medium",
+        "line_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [
+        {
+          "id": "M39",
+          "role": "line_medium",
+          "automatic_pairing_allowed": true
+        },
+        {
+          "id": "M50",
+          "role": "base_medium",
+          "automatic_pairing_allowed": true
+        },
+        {
+          "id": "M73",
+          "role": "base_medium",
+          "automatic_pairing_allowed": true
+        }
+      ],
+      "avoid": [
+        "unrequested_physical_craft_artifacts",
+        "mixed_resolution_edges"
+      ],
+      "resolver": {
+        "automatic_use_allowed": true,
+        "manual_review_required": false,
+        "assessment_basis": "pilot_visual_estimate",
+        "confidence": 0.72
+      }
     },
     {
       "id": "M75",
       "name_zh": "像素藝術",
       "name_en": "Pixel Art",
       "family": "digital_creation",
+      "medium_kind": "digital_creation_method",
       "classification_level": "digital_method",
       "card": "cards/M75__pixel_art.png",
       "source_sha256": "757b2ef545895ebc41b905b30eb28fd316220a990e9bd58de04c104df9450e85",
-      "profile_status": "pending"
+      "profile_status": "pending",
+      "assets": {
+        "card": "Media/cards/M75__pixel_art.png",
+        "thumbnail": "Media/thumbnails/M75.jpg",
+        "reference_panels": []
+      },
+      "mechanisms": [
+        "digital_mark_construction",
+        "editable_layers",
+        "resolution_specific_edges"
+      ],
+      "capabilities": {
+        "opacity": 5,
+        "line_precision": 5,
+        "medical_label_legibility": 5,
+        "portrait_fit": 4,
+        "anatomy_fit": 5,
+        "scene_fit": 5,
+        "public_health_fit": 5,
+        "archive_fit": 2,
+        "digital_fit": 5
+      },
+      "recommended_roles": [
+        "base_medium",
+        "line_medium",
+        "texture_accent"
+      ],
+      "compatible_partners": [],
+      "avoid": [
+        "unrequested_physical_craft_artifacts",
+        "mixed_resolution_edges"
+      ],
+      "resolver": {
+        "automatic_use_allowed": false,
+        "manual_review_required": true,
+        "assessment_basis": "family_default_estimate",
+        "confidence": 0.35
+      }
     }
   ]
 }
