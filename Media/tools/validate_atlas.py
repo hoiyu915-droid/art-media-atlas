@@ -67,10 +67,20 @@ def main() -> None:
 
     profiles = sorted((ROOT / "profiles").glob("M*.json"))
     assert len(profiles) == 12, f"Expected 12 pilot profiles, found {len(profiles)}"
+    thumbnails = sorted((ROOT / "thumbnails").glob("M*.jpg"))
+    assert len(thumbnails) == 75, f"Expected 75 gallery thumbnails, found {len(thumbnails)}"
+    for thumbnail in thumbnails:
+        assert image_size(thumbnail) == (600, 400), f"Unexpected thumbnail size: {thumbnail}"
+    assert image_size(ROOT / "social-preview.jpg") == (1200, 630)
+    index = ROOT.parent / "index.html"
+    assert index.is_file(), "Missing root index.html"
+    index_text = index.read_text(encoding="utf-8")
+    assert 'fetch("Media/manifest.json")' in index_text
+    assert "Media/thumbnails/M01.jpg" in index_text
     assert (ROOT / "recipes" / "clinical-soft-precise.yaml").is_file()
     assert (ROOT / "panels" / "crop-calibration.json").is_file()
 
-    print("Media Atlas validation passed: 75 cards, 12 profiles, 48 panels.")
+    print("Media Atlas validation passed: 75 cards, 75 thumbnails, 12 profiles, 48 panels.")
 
 
 if __name__ == "__main__":

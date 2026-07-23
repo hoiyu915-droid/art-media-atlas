@@ -2,6 +2,10 @@
 
 A standardized visual reference atlas comparing 75 traditional and contemporary art media through a consistent 3 × 3 test-board framework.
 
+## Web gallery
+
+Open [`index.html`](index.html) through GitHub Pages to browse all 75 cards with search, category filters, responsive layout, full-resolution viewing, and shareable card links. Lightweight thumbnails keep the first visit fast; full cards load only when opened.
+
 ## Media system
 
 The usable atlas is in [`Media/`](Media/README.md):
@@ -11,6 +15,7 @@ The usable atlas is in [`Media/`](Media/README.md):
 - `Media/profiles/` — structured YAML and JSON profiles.
 - `Media/recipes/` — reusable mixed-media prompt recipes.
 - `Media/contact-sheets/` — visual QA and browsing sheets.
+- `Media/thumbnails/` — lightweight gallery thumbnails.
 - `Media/tools/atlas_cli.py` — local selector and query tool.
 - `Media/manifest.yaml` / `Media/manifest.json` / `Media/manifest.csv` — canonical index.
 
