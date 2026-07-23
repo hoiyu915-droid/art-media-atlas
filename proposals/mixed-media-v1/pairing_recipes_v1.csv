@@ -1,0 +1,9 @@
+recipe_id,name,base_medium_id,partner_1,partner_2,best_for,status
+R01,醫學圖鑑主配方,M17,M22,,解剖、機制、研究摘要,default
+R02,高精度醫學線條,M17,M22,M39,密集器材與標籤,conditional
+R03,公衛平塗配方,M02,M39,,流程、警示、模組卡,reviewed pilots
+R04,病人敘事配方,M01,M39,,人物、生活、照護,reviewed pilots
+R05,不透明醫學配方,M43,M39,,器官、人物、標籤,reviewed pilots
+R06,少色公衛印刷,M50,M39,,公衛與研究摘要,reviewed pilots
+R07,數位精度配方,M73,M74,,高密度、可編輯圖卡,reviewed pilots
+R08,向量公衛配方,M74,M39,,流程、圖示、解剖,reviewed pilots
