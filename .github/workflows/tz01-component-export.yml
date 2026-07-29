@@ -1,0 +1,65 @@
+name: TZ01 component export
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [tz01-export-runner-20260730]
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout pinned metadata paths
+        uses: actions/checkout@v4
+        with:
+          ref: b094ee5af3c6af2625d95d8b7bd3fba40d2d5fd5
+          path: source
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            **/*.md
+            **/*.json
+            **/*.yaml
+            **/*.yml
+            **/*.py
+            **/*.txt
+            **/*.csv
+            **/*.tsv
+            **/*.toml
+            **/*.schema
+      - name: Build metadata-only component snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, shutil
+          from pathlib import Path
+          component='art-media-atlas'; repository='hoiyu915-droid/art-media-atlas'; commit='b094ee5af3c6af2625d95d8b7bd3fba40d2d5fd5'
+          source=Path('source'); root=Path('export')/component; root.mkdir(parents=True,exist_ok=True)
+          excluded_dirs={'.git','.github','.venv','venv','node_modules','__pycache__','.pytest_cache','.mypy_cache','.ruff_cache','dist','build','coverage','.coverage','cards','images','panels'}
+          allowed_suffixes={'.py','.json','.yaml','.yml','.md','.txt','.toml','.schema','.csv','.tsv'}
+          invalid=set('<>:"|?*'); copied=[]; skipped=[]
+          for path in sorted(p for p in source.rglob('*') if p.is_file()):
+              rel=path.relative_to(source)
+              if any(part in excluded_dirs for part in rel.parts): continue
+              if any(any(c in invalid for c in part) for part in rel.parts): skipped.append(rel.as_posix()); continue
+              if path.suffix.lower() not in allowed_suffixes or path.stat().st_size>5_000_000: continue
+              target=root/rel; target.parent.mkdir(parents=True,exist_ok=True); shutil.copy2(path,target); copied.append(target)
+          files=[]
+          for path in sorted(copied):
+              data=path.read_bytes(); files.append({'path':path.relative_to(root).as_posix(),'size':len(data),'sha256':hashlib.sha256(data).hexdigest(),'git_blob_sha1':hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()})
+          (root/'.tz01_component_export.json').write_text(json.dumps({'component':component,'repository':repository,'commit':commit,'selection':'metadata_manifest_schema_and_semantic_indices_only','excluded_binary_assets':true,'skipped_nonportable_paths':skipped,'files':files},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+      - name: Upload component artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tz01-component-art-media-atlas
+          path: export
+          if-no-files-found: error
+          compression-level: 9
+          retention-days: 1
+          include-hidden-files: true
