@@ -52,7 +52,7 @@ jobs:
           files=[]
           for path in sorted(copied):
               data=path.read_bytes(); files.append({'path':path.relative_to(root).as_posix(),'size':len(data),'sha256':hashlib.sha256(data).hexdigest(),'git_blob_sha1':hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()})
-          (root/'.tz01_component_export.json').write_text(json.dumps({'component':component,'repository':repository,'commit':commit,'selection':'metadata_manifest_schema_and_semantic_indices_only','excluded_binary_assets':true,'skipped_nonportable_paths':skipped,'files':files},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          (root/'.tz01_component_export.json').write_text(json.dumps({'component':component,'repository':repository,'commit':commit,'selection':'metadata_manifest_schema_and_semantic_indices_only','excluded_binary_assets':True,'skipped_nonportable_paths':skipped,'files':files},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PY
       - name: Upload component artifact
         uses: actions/upload-artifact@v4
