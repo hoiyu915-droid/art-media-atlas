@@ -69,6 +69,10 @@ The atlas is designed for artists, educators, prompt and rendering-tool authors,
 
 Application code, tools, tests, schemas, and validation logic are licensed under Apache-2.0. Original documentation, structured data, recipes, and visual assets are licensed under CC BY 4.0 where rights permit. See [`LICENSE`](LICENSE), [`LICENSE-ASSETS.md`](LICENSE-ASSETS.md), and [`NOTICE.md`](NOTICE.md) for exact boundaries and exclusions.
 
+## Roadmap
+
+See [`ROADMAP.md`](ROADMAP.md) for current priorities and proposed stabilization work.
+
 ## Citation
 
 Use [`CITATION.cff`](CITATION.cff) and cite the exact commit or release used.
