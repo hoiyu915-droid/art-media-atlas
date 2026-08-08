@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use art-media-atlas, please cite the repository and the exact commit or release."
+title: "art-media-atlas"
+type: software
+authors:
+  - name: "hoiyu915-droid"
+repository-code: "https://github.com/hoiyu915-droid/art-media-atlas"
+license: Apache-2.0

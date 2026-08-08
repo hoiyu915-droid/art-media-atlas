@@ -46,3 +46,33 @@ Cards use `M##__english_medium_name.ext`. Panel paths use `Media/panels/M##/NN__
 ## Scope and limitations
 
 This repository is a visual-reference and benchmark system. Generated card text is not authoritative medical, craft, chemical-safety, or historical evidence. Digital entries M72–M75 are classified separately from traditional physical media in the manifest.
+
+## Why this project matters
+
+Art Media Atlas provides a consistent benchmark and machine-readable vocabulary for comparing 75 visual media. Its shared test framework, resolver-ready manifests, schemas, profiles, and cropped reference panels help people and generation pipelines select media intentionally instead of relying on ambiguous style labels.
+
+The repository is actively maintained through pull-request review, manifest and schema validation, asset-integrity checks, gallery maintenance, and release-oriented integration.
+
+## Maintainer workflow and Codex
+
+Codex may assist with repository inspection, pull-request preparation, validation, regression repair, documentation, and release workflows. Maintainers review every change and remain responsible for asset rights, attribution, correctness, and merge decisions.
+
+## Contributing and security
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) before adding media profiles, recipes, code, or assets. Report vulnerabilities through the private process in [`SECURITY.md`](SECURITY.md).
+
+## Adoption and impact
+
+The atlas is designed for artists, educators, prompt and rendering-tool authors, and multilingual visual-generation workflows. No unverified traffic, download, or adoption figures are claimed. Public integrations may be recorded through issues or pull requests so impact remains auditable.
+
+## License
+
+Application code, tools, tests, schemas, and validation logic are licensed under Apache-2.0. Original documentation, structured data, recipes, and visual assets are licensed under CC BY 4.0 where rights permit. See [`LICENSE`](LICENSE), [`LICENSE-ASSETS.md`](LICENSE-ASSETS.md), and [`NOTICE.md`](NOTICE.md) for exact boundaries and exclusions.
+
+## Roadmap
+
+See [`ROADMAP.md`](ROADMAP.md) for current priorities and proposed stabilization work.
+
+## Citation
+
+Use [`CITATION.cff`](CITATION.cff) and cite the exact commit or release used.
